@@ -16,6 +16,8 @@ class CreateProductsTable extends Migration
         Schema::create('products', function (Blueprint $table) {
 
             $table->bigIncrements('pid'); 
+            $table->integer('uid')->unsigned();
+            $table->foreign('uid')->references('id')->('users');
             $table->string('image')->default('');
             $table->string('brand')->default('');
             $table->string('asin')->default('');

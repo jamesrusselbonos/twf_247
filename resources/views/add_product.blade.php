@@ -53,12 +53,12 @@
 
         <label>Product Image</label>
         <div class="input-group">
-            <span class="input-group-btn">
+            <span class="input-group-btn" style="margin-right:70px;">
                 <span class="btn btn-default btn-file">
-                   <button class="btn btn-outline-secondary"  type="button"> Browse… </button><input type="file" name="product_image" id="imgInp">
+                   <button class="btn btn-outline-secondary"  type="button"> Browse… </button>  <input type="file"  name="product_image" id="imgInp">
                 </span>
             </span>
-            <input type="text" class="form-control" readonly>
+            <input type="text" style="cursor:not-allowed;"  class="form-control" readonly>
         </div>
        
     </div>

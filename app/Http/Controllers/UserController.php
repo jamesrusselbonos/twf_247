@@ -70,7 +70,7 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-
+       
         $user = User::findOrFail($request->id);
         $user->id = $request['id']; 
         $user->wallet = $request['wallet'] - '1'; 

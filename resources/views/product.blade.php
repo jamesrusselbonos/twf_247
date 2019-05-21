@@ -1,17 +1,5 @@
 
-<!DOCTYPE html>
-<html>
-<head></head>
-
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.5.6/css/buttons.dataTables.min.css">
-<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
-<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/fixedheader/3.1.2/css/fixedHeader.dataTables.min.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-
+  
 <style type="text/css">
 	#example img{
 
@@ -24,38 +12,97 @@
 		text-align: center;
 
 	}
-	
+	.buts {
+		margin-left: 450px;
+
+	}
+	.buts .close-cart, .add-cart{
+		cursor: pointer;
+	}
+
+	.details{
+
+		border: 10px;
+	}
+
 
 </style>
-<body>
 
+@extends('layouts.admin')
 	
-	<div class="container">
-	<br>
-	<!-- <a href="{{ route('addproduct') }}" class="btn btn-warning">Add Product<a> -->
-	<!-- Button trigger modal -->
+	
+@section('content')
 
-	<!-- Modal -->
-	<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-	  <div class="modal-dialog modal-dialog-centered" role="document">
-	    <div class="modal-content">
-	      <div class="modal-header">
-	        <h5 class="modal-title" id="exampleModalLongTitle">Confirmation</h5>
-	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-	          <span aria-hidden="true">&times;</span>
-	        </button>
-	      </div>
-	      <div class="modal-body">
-	        Do you want to continue?
-	      </div>
-	      <div class="modal-footer">
-	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-	        <button type="button" class="btn btn-primary" id="continue_btn">Continue</button>
-	      </div>
+	<div class="modal fade " id="exampleModalCenter" role="dialog">
+	  <div class="modal-dialog modal-lg modal-full-height modal-right" >
+	  	<div class="modal-content" style="background: #eee";>
+<!-- 	       <div class="modal-header">
+	         <h5 class="modal-title" id="exampleModalLongTitle">Confirmation</h5>
+	         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	           <span aria-hidden="true">&times;</span>
+	         </button>
+	       </div> -->
+	        		<div class="card">
+	        			<div class="container-fliud" >
+	        				<div class="wrapper row">
+	        					<div class="preview col-md-6">
+	        						
+	        						<div class="preview-pic tab-content">
+	        						  <div class="tab-pane active prod_img" id="pic-1"><img id="pic" src="" /></div>
+
+	        						</div>
+	        						
+	        						
+	        					</div>
+	        					<div class="details col-md-6">
+	        						<center><h3 class="product-title">Product Details</h3></center>
+	        						
+	        						<div class="row">
+	        							<div class="numb col-md-6">
+		        							<h4 class="price"></h4>
+		        							<label id="units_mo"></label> 
+		        							<label id="reven_mo"></label>
+		        							<label id="sellers"></label>
+		        							<label id="eq_units"></label>
+		        							<label id="eq_reven"></label>
+		        						</div>
+
+	        							<div class="numb col-md-6">
+			        						<p id="brand"></p>
+			        						<p id="asin"></p>
+			        						<p id="address"></p>
+			        						<p id="contact"></p>
+			        						<p id="name"></p>
+			        						<p id="position"></p>
+			        						<p id="prod_link1">Product Link: <a href="" target="_blank" id="prod_link">Click Here</a></p>
+			        						<p id="web1">Website: <a href="" target="_blank" id="web"></a></p>
+			        						<p id="email1">Email: <a href="" target="_blank" id="email"></a></p>
+	        						
+	        							</div>
+		        						
+	        						</div>
+	        					</div>
+	        				</div>
+	        			</div>
+
+	        	
+	        		</br>
+	        	
+
+	      <input id="hdn-token" class="hdn-token" type="hidden" name="_token" value="{{ csrf_token() }}">
+	      <input id="hdn-pid" class="hdn-pid" type="hidden" name="pid" value="">
+	      <input id="hdn-wallet" class="hdn-wallet" type="hidden" name="wallet" value="">
+	      <input id="hdn-id" class="hdn-id" type="hidden" name="id" value="{{ auth()->user()->id}}">
+	      	<div class="buts">
+	      		<!-- <button type="button" class="add-cart btn btn-warning">ADD TO CART</button> -->
+	      		<a href="" class="add-cart btn btn-warning" id="add-cart">ADD TO CART</a>
+	      		<button type="button" class="close-cart btn btn-secondary" data-dismiss="modal">CLOSE</button>
+	      	</div>
+	        
+	      	</div>
 	    </div>
 	  </div>
 	</div>
-
 
 	<input id="hdn-token" type="hidden" name="_token" value="{{ csrf_token() }}">
 	<table id="example" class="display nowrap table-responsive" style="width:100%">
@@ -88,10 +135,12 @@
 	        </thead>
 	        <tbody>
 
+<!-- data-toggle="modal" data-target="#exampleModalCenter"  -->
 	        	{{ var_dump(auth()->user()->wallet) }}
-
+				
 	        	@foreach ($products as $product)
 	        	{{csrf_field()}}
+	        	<input id="hdn-token" type="hidden" name="_token" value="{{ csrf_token() }}">
 	        	              <tr>
 	        	              	@if( auth()->user()->wallet > 0 )
 	        	              	  <td><img src="{{ asset($product->image) }}" /></td>
@@ -101,9 +150,14 @@
 	        	                  <td>{{ $product->competitive_sellers }}</td>
 	        	                  <td>{{ $product->our_sales_equity_units_mo }}</td>
 	        	                  <td>${{ number_format($product->our_sales_equity_revenue_mo,2) }}</td>
+	        	                   <!-- data-placement="left" data-toggle="popover"  data-content="My popover content.My popover content.My popover content.My popover content."  -->
 	        	                  <!-- onclick="ConfirmDialog()" data-toggle="modal" data-target="#exampleModalCenter"  -->
 	        	                  <!-- <td><a href=" {{ $product->product_page_link }} " data-toggle="modal" data-target="#exampleModalCenter" data-1="{{ auth()->user()->wallet }}" data-2=" {{auth()->user()->id}} " data-3="{{ $product->pid }}" class="btn btn-warning buy "> Buy Now </a></td> -->
-	        	                  <td><button type="button" data-1="{{ auth()->user()->wallet }}" pid="{{ $product->pid }}" id=" {{auth()->user()->id}} " class="btn btn-warning buy ">Buy Now</button></td>
+	        	                  <!-- <td><button type="button"  data-1="{{ auth()->user()->wallet }}"  data-toggle="modal" data-target="#exampleModalCenter" pid="{{ $product->pid }}" id="buy" id1=" {{auth()->user()->id}} " class="btn btn-warning buy ">Buy Now</button></td> -->
+	        	                  <td><button type="button"  data-1="{{ auth()->user()->wallet }}"  id="buy" id1=" {{auth()->user()->id}} " class="btn btn-warning buy " data-toggle="modal" data-target="#exampleModalCenter"
+	        	                  	pid ="{{ $product->pid }}" image ="{{ asset($product->image) }}" brand ="{{ $product->brand }}" asin="{{ $product->asin }}" prod_link ="{{ $product->product_page_link }}" price ="{{ $product->prime_low_price }}" unit_sold_mo ="{{ $product->total_units_sold_mo }}" reven_mo ="{{ $product->total_revenue_mo}}" 
+	        	                  	sellers ="{{ $product->competitive_sellers}}" eq_units ="{{ $product->our_sales_equity_units_mo}}" eq_reven ="{{ $product->our_sales_equity_revenue_mo }}" website ="{{ $product->website_url }}" fname ="{{ $product->firstname }}"  lname ="{{ $product->lastname }}" address ="{{ $product->address }}"  
+	        	                  	contact_no="{{ $product->contact_no}}" position="{{ $product->position}}" email="{{ $product->email}}">Buy Now</button></td>
 <!-- 	        	               <!- target="_blank"   <td><button type="button"  id="buy" target="_blank" data-1="{{ auth()->user()->wallet }}" data-2=" {{auth()->user()->id}} " data-3="{{ $product->pid }}" class="btn btn-warning buy " >Buy Now</button></td>
  -->	        	              @elseif ( auth()->user()->wallet <= 0 )
 
@@ -138,160 +192,5 @@
 
 
 
-	   </div>
-</body>
-</html>
-
-<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.5.6/js/dataTables.buttons.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.flash.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.html5.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.print.min.js"></script>
-
-<script type="text/javascript">
-$(document).ready(function() {
-
-
-    $('#example').DataTable( {
-    		
-    	 "fixedHeader": {
-      		header: true,
-      		footer: true,
-
-    	},
-    	"columnDefs": [ {
-    	"targets": [ 0, 7 ],
-    	"orderable": false
-    	} ],
-    		scrollY:  '1000px',
-    		scrollX:  false,
-        dom: 'Bfrtip',
-        // "pageLength": 50,
-        "bPaginate": false,
-
-        buttons: [
-
-        {
-                       extend:    'copyHtml5',
-                       text:      '<i class="fa fa-files-o"></i>',
-                       titleAttr: 'Copy'
-                   },
-                   {
-                       extend:    'excelHtml5',
-                       text:      '<i class="fa fa-file-excel-o"></i>',
-                       titleAttr: 'Excel',
-                       title: 'TestFileName1'
-                   },
-                   {
-                       extend:    'pdfHtml5',
-                       text:      '<i class="fa fa-file-pdf-o"></i>',
-                       titleAttr: 'PDF',
-                       title: 'TestFileName2'
-                   },
-                   {
-                       extend:    'print',
-                       text:      '<i class="fa fa-print"></i>',
-                       titleAttr: 'Print',
-                       title: 'TestFileName3'
-
-                   }
-   //          {
-   //              extend: 'excelHtml5',
-   //              title: 'test',
-
-   //          },
-   //          {
-   //              extend: 'pdfHtml5',
-   //              title: 'Dtest'
-   //          }
-   //          ,
-   //          {
-   //          	extend: 'print',
-   //          	title: 'test'
-			// }
-        ]
-    } );
-		
-
-		// $("#buy").on('click', function(e){
-
-		// 	var id = $(this).data('2');
-		// 	var wallet = $(this).data('1');
-		// 	var pid = $(this).data('3');
-
-		// 	console.log(pid);
-
-		// 	//   $.post('user/' + id, {'id':id,'wallet':wallet,'pid':pid,'_token':$('input[name=_token]').val()}, function(data){
-			
-		// 	//   console.log(data);
-		// 	// });
-		// });	
-		// $("p").click(function(){
-		//   alert("The paragraph was clicked.");
-		// });
-	
-
-
-		function ConfirmDialog(message){
-    		$('<div></div>').appendTo('body')
-                    .html('<div><h6>'+message+'?</h6></div>')
-                    .dialog({
-                        modal: true, title: 'Delete message', zIndex: 10000, autoOpen: true,
-                        width: 'auto', resizable: false,
-                        buttons: {
-                            Yes: function () {
-                                // $(obj).removeAttr('onclick');                                
-                                // $(obj).parents('.Parent').remove();
-																
-                                $('body').append('<h1>Confirm Dialog Result: <i>Yes</i></h1>');
-                                
-                                $(this).dialog("close");
-                            },
-                            No: function () {                           		                              $('body').append('<h1>Confirm Dialog Result: <i>No</i></h1>');
-                            
-                                $(this).dialog("close");
-                            }
-                        },
-                        close: function (event, ui) {
-                            $(this).remove();
-                        }
-                    });
-    	};
-		$(".buy").click(function(){
-			var wallet = $(this).data('1');
-			var pid = $(this).attr("pid");
-			var id = $(this).attr("id");
-			console.log(id);
-		    if(confirm("Are you sure you ?"))  
-		  {  
-		         $.post('user/' + id, {'id':id,'wallet':wallet,'pid':pid,'_token':$('input[name=_token]').val()}, function(data){
-		       	location.reload();
-
-		       	console.log(id);
-		          });
-		  }  
-		  else  
-		  {  
-		       return false;  
-		  }  
-		});
-		
-
-		 // function getConfirmation() {
-   //             var text = confirm("Do you want to continue ?");
-   //             if( text == true ) {
-   //                  $.post('user/' + id, {'id':id,'wallet':wallet,'pid':pid,'_token':$('input[name=_token]').val()}, function(data){
-   //                	location.reload();
-                    
-   //                });
-   //             } else {
-   //                document.write ("User does not want to continue!");
-   //                return false;
-   //             }
-   //          }
-} );
-</script>
+	   
+@endsection
