@@ -201,7 +201,7 @@
 	    </div>
 	  </div>
 	</div>
-
+</br>
 	<input id="hdn-token" type="hidden" name="_token" value="{{ csrf_token() }}">
 	<table id="example" class="display nowrap table-responsive" style="width:100%">
 	        <thead>
@@ -233,9 +233,7 @@
 	        </thead>
 	        <tbody>
 
-<!-- data-toggle="modal" data-target="#exampleModalCenter"  -->
-	        	{{ var_dump(auth()->user()->wallet) }}
-				
+<!-- data-toggle="modal" data-target="#exampleModalCenter"  -
 	        	@foreach ($products as $product)
 	        	{{csrf_field()}}
 	        	<input id="hdn-token" type="hidden" name="_token" value="{{ csrf_token() }}">
