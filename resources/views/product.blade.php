@@ -233,7 +233,9 @@
 	        </thead>
 	        <tbody>
 
-<!-- data-toggle="modal" data-target="#exampleModalCenter"  -
+<!-- data-toggle="modal" data-target="#exampleModalCenter"  -->
+	        
+				
 	        	@foreach ($products as $product)
 	        	{{csrf_field()}}
 	        	<input id="hdn-token" type="hidden" name="_token" value="{{ csrf_token() }}">
