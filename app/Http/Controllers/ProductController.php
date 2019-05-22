@@ -198,8 +198,10 @@ class ProductController extends Controller
             }
             
         }
+
         $oldCart= Session::get('cart');
         $cart = new Cart($oldCart);
+        Session::forget('cart');
         // dd($cart->items);
         return view('checkout', ['products' => $cart->items, 'totalPrice' => $cart->totalPrice]);
     }

@@ -120,6 +120,10 @@
 	  .color:first-of-type {
 	    margin-left: 20px; }
 
+	    div.dt-buttons {
+	    	display: none;
+	    }
+
 </style>
 
 @extends('layouts.admin')

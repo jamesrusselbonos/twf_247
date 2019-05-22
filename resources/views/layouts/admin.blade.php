@@ -58,7 +58,7 @@
         <a class="nav-link" data-widget="pushmenu" href="#"><i class="fa fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="index3.html" class="nav-link">Home</a>
+        <a href="{{ route('home')}}" class="nav-link">Home</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <a href="#" class="nav-link">Contact</a>
@@ -81,15 +81,15 @@
     <ul class="navbar-nav ml-auto">
      
 
-     <li style="padding:5px"><a href="{{ route('product.shoppingCart') }}">
+     <li style="padding:5px;"><a href="{{ route('product.shoppingCart') }}" style="color:rgba(0,0,0,.5); text-decoration: none;">
          <i class="fa fa-shopping-cart" aria-hidden="true"></i> Shopping Cart
-         <span class="badge">{{ Session::has('cart') ? Session::get('cart')->totalQty : '' }}</span>
+         <span style="background-color: #e65c00" class="badge">{{ Session::has('cart') ? Session::get('cart')->totalQty : '' }}</span>
      </a></li>
-
+    @guest
      <li style="padding:5px">
       <a href="{{ route('login') }}">LOGIN</a>
      </li> <!-- Messages Dropdown Menu -->
-    
+    @endguest
     </ul>
   </nav>
   <!-- /.navbar -->
@@ -335,6 +335,54 @@ $(document).ready(function() {
         {
                        extend:    'copyHtml5',
                        text:      '<i class="fa fa-files-o"></i>',
+                       titleAttr: 'Copy',
+                   },
+                   {
+                       extend:    'excelHtml5',
+                       text:      '<i class="fa fa-file-excel-o"></i>',
+                       titleAttr: 'Excel',
+                       title: 'TestFileName1'
+                   },
+                   {
+                       extend:    'pdfHtml5',
+                       text:      '<i class="fa fa-file-pdf-o"></i>',
+                       titleAttr: 'PDF',
+                       title: 'TestFileName2'
+                   },
+                   {
+                       extend:    'print',
+                       text:      '<i class="fa fa-print"></i>',
+                       titleAttr: 'Print',
+                       title: 'TestFileName3'
+
+                   }
+
+                   ]
+        
+    } );
+
+    $('#example1').DataTable( {
+        
+       "fixedHeader": {
+          header: true,
+          footer: true,
+
+      },
+      "columnDefs": [ {
+      "targets": [ 0, 7 ],
+      "orderable": false
+      } ],
+        scrollY:  '1000px',
+        scrollX:  false,
+        dom: 'Bfrtip',
+        // "pageLength": 50,
+        "bPaginate": false,
+
+        buttons: [
+
+        {
+                       extend:    'copyHtml5',
+                       text:      '<i class="fa fa-files-o"></i>',
                        titleAttr: 'Copy'
                    },
                    {
@@ -358,90 +406,11 @@ $(document).ready(function() {
                    }
 
                    ]
-   //          {
-   //              extend: 'excelHtml5',
-   //              title: 'test',
-
-   //          },
-   //          {
-   //              extend: 'pdfHtml5',
-   //              title: 'Dtest'
-   //          }
-   //          ,
-   //          {
-   //           extend: 'print',
-   //           title: 'test'
-      // }
         
     } );
 
     
-    // var div = document.createElement('div');
-    // div.setAttribute('class', 'post block bc2');
-    // div.innerHTML = `
-    //     <div class="parent">
-    //         <div class="child">$</div>
-    //         <div class="child">+</div>
-    //         <div class="child">$</div>
-    //         <div class="child">=</div>
-    //         <div class="child">$</div>
-    //     </div>
-    // `;
-    // document.getElementById('buy').appendChild(div);
 
-    // $("#buy").on('click', function(e){
-
-    //  var id = $(this).data('2');
-    //  var wallet = $(this).data('1');
-    //  var pid = $(this).data('3');
-
-    //  console.log(pid);
-
-    //  //   $.post('user/' + id, {'id':id,'wallet':wallet,'pid':pid,'_token':$('input[name=_token]').val()}, function(data){
-      
-    //  //   console.log(data);
-    //  // });
-    // });  
-    // $("p").click(function(){
-    //   alert("The paragraph was clicked.");
-    // });
-
-
-
-    ////FETCHDATA//////
-
-
-    // $('.buy').popover({
-    //  title:fetchData,
-    //  html:true,
-    //  placement:'left'
-    //  // delay: {show: 200, hide: 1000}
-
-    // });
-
-    // function fetchData(){
-    //  var fetch_data = '';
-    //  var element = $(this);
-    //  var pid = element.attr("pid");
-    //  var token = $(".hdn-token").val();
-
-    //  $.ajax({
-    //    url: 'product/' + pid,
-    //    method:"GET",
-    //    headers: {
-    //            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-    //        },
-    //    async: false,
-    //    data: {pid:pid },
-
-    //    success:function(data){
-    //      console.log(token);
-    //      fetch_data = data;
-    //    }
-
-    //  });
-    //  return fetch_data;
-    // }
 
     $("#checkout").click(function(){
       var id = $(this).data('2');

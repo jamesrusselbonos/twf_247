@@ -1,132 +1,78 @@
 
-  
-<style type="text/css">
-	#example img{
 
-		display:block; width:100%; height:auto;
-
-	}
-
-
-	#example td{
-		text-align: center;
-
-	}
-	.buts {
-		margin-left: 450px;
-
-	}
-	.buts .close-cart, .add-cart{
-		cursor: pointer;
-	}
-
-	.details{
-
-		border: 10px;
-	}
-	img {
-	  max-width: 100%; }
-
-	.preview {
-	  display: -webkit-box;
-	  display: -webkit-flex;
-	  display: -ms-flexbox;
-	  display: flex;
-	  -webkit-box-orient: vertical;
-	  -webkit-box-direction: normal;
-	  -webkit-flex-direction: column;
-	      -ms-flex-direction: column;
-	          flex-direction: column; }
-	  @media screen and (max-width: 996px) {
-	    .preview {
-	      margin-bottom: 20px; } }
-
-	.preview-pic {
-	  -webkit-box-flex: 1;
-	  -webkit-flex-grow: 1;
-	      -ms-flex-positive: 1;
-	          flex-grow: 1; }
-
-	.preview-thumbnail.nav-tabs {
-	  border: none;
-	  margin-top: 15px; }
-	  .preview-thumbnail.nav-tabs li {
-	    width: 18%;
-	    margin-right: 2.5%; }
-	    .preview-thumbnail.nav-tabs li img {
-	      max-width: 100%;
-	      display: block; }
-	    .preview-thumbnail.nav-tabs li a {
-	      padding: 0;
-	      margin: 0; }
-	    .preview-thumbnail.nav-tabs li:last-of-type {
-	      margin-right: 0; }
-
-	.tab-content {
-	  overflow: hidden; }
-	  .tab-content img {
-	    width: 100%;
-	    -webkit-animation-name: opacity;
-	            animation-name: opacity;
-	    -webkit-animation-duration: .3s;
-	            animation-duration: .3s; }
-
-	.card {
-	  margin-top: 50px;
-	  background: #eee;
-	  padding: 3em;
-	  line-height: 1.5em; }
-
-	
-	.details {
-	  display: -webkit-box;
-	  display: -webkit-flex;
-	  display: -ms-flexbox;
-	  display: flex;
-	  -webkit-box-orient: vertical;
-	  -webkit-box-direction: normal;
-	  -webkit-flex-direction: column;
-	      -ms-flex-direction: column;
-	          flex-direction: column; }
-
-	.colors {
-	  -webkit-box-flex: 1;
-	  -webkit-flex-grow: 1;
-	      -ms-flex-positive: 1;
-	          flex-grow: 1; }
-
-	.product-title, .price, .colors {
-	  text-transform: UPPERCASE;
-	  font-weight: bold; }
-
-	.checked, .price span {
-	  color: #ff9f1a; }
-
-	.product-title, .rating, .product-description, .price {
-	  margin-bottom: 15px; }
-
-	.product-title {
-	  margin-top: 0; }
+<html>
+  <head>
 
 
 
-	.color {
-	  display: inline-block;
-	  vertical-align: middle;
-	  margin-right: 10px;
-	  height: 2em;
-	  width: 2em;
-	  border-radius: 2px; }
-	  .color:first-of-type {
-	    margin-left: 20px; }
+  	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  	<link href="{{ asset('css/style.css') }}">
 
-</style>
+  	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+  	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.5.6/css/buttons.dataTables.min.css">
+  	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-@extends('layouts.admin')
-	
-	
-@section('content')
+  	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  	
+  	<style type="text/css">
+  		#example1 img{
 
+  			display:block; width:100%; height:auto;
+
+  		}
+
+
+  		#example1 td{
+  			text-align: center;
+
+  		}
+  		.buts {
+  			margin-left: 450px;
+
+  		}
+  		.buts .close-cart, .add-cart{
+  			cursor: pointer;
+  		}
+
+  		
+
+  	</style>
+  </head>
+
+
+<body>
+
+	<nav class="main-header navbar navbar-expand bg-white navbar-light border-bottom">
+  <!-- Left navbar links -->
+  <ul class="navbar-nav">
+    <li class="nav-item">
+      <a class="nav-link" data-widget="pushmenu" href="#"><i class="fa fa-bars"></i></a>
+    </li>
+    <li class="nav-item d-none d-sm-inline-block">
+      <a href="{{ route('home')}}" class="nav-link">Home</a>
+    </li>
+    <li class="nav-item d-none d-sm-inline-block">
+      <a href="#" class="nav-link">Contact</a>
+    </li>
+  </ul>
+
+  <!-- SEARCH FORM -->
+  <form class="form-inline ml-3">
+    <div class="input-group input-group-sm">
+      <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
+      <div class="input-group-append">
+        <button class="btn btn-navbar" type="submit">
+          <i class="fa fa-search"></i>
+        </button>
+      </div>
+    </div>
+  </form>
+
+  <!-- Right navbar links -->
+
+</nav>
 	<div class="modal fade " id="exampleModalCenter" role="dialog">
 	  <div class="modal-dialog modal-lg modal-full-height modal-right" >
 	  	<div class="modal-content" style="background: #eee";>
@@ -199,7 +145,7 @@
 	</div>
 
 	<input id="hdn-token" type="hidden" name="_token" value="{{ csrf_token() }}">
-	<table id="example" class="display nowrap table-responsive" style="width:100%">
+	<table id="example1" class="display nowrap table-responsive" style="width:100%">
 	        <thead>
 	            <tr class="fixed-tr"  >
 
@@ -256,9 +202,69 @@
 
 	    </table>
 
+	</body>
 
+	<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+	<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+	<script src="https://cdn.datatables.net/buttons/1.5.6/js/dataTables.buttons.min.js"></script>
+	<script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.flash.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+	<script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.html5.min.js"></script>
+	<script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.print.min.js"></script>
 
-	   
-@endsection
+</html>
 
+<script type="text/javascript">
+	$(document).ready(function() {
 
+	$('#example1').DataTable( {
+	    
+	   "fixedHeader": {
+	      header: true,
+	      footer: true,
+
+	  },
+	  "columnDefs": [ {
+	  "targets": [ 0, 7 ],
+	  "orderable": false
+	  } ],
+	    scrollY:  '1000px',
+	    scrollX:  false,
+	    dom: 'Bfrtip',
+	    // "pageLength": 50,
+	    "bPaginate": false,
+
+	    buttons: [
+
+	    {
+	                   extend:    'copyHtml5',
+	                   text:      '<i class="fa fa-files-o"></i>',
+	                   titleAttr: 'Copy'
+	               },
+	               {
+	                   extend:    'excelHtml5',
+	                   text:      '<i class="fa fa-file-excel-o"></i>',
+	                   titleAttr: 'Excel',
+	                   title: 'TestFileName1'
+	               },
+	               {
+	                   extend:    'pdfHtml5',
+	                   text:      '<i class="fa fa-file-pdf-o"></i>',
+	                   titleAttr: 'PDF',
+	                   title: 'TestFileName2'
+	               },
+	               {
+	                   extend:    'print',
+	                   text:      '<i class="fa fa-print"></i>',
+	                   titleAttr: 'Print',
+	                   title: 'TestFileName3'
+
+	               }
+
+	               ]
+	    
+	} );
+} );
+</script>
