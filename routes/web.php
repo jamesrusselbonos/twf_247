@@ -27,6 +27,7 @@ Route::get('/product', 'ProductController@index')->name('product.index');
 Route::get('add-to-cart/{id}', 'ProductController@getAddToCart')->name('product.addToCart');
 Route::get('/shopping-cart', 'ProductController@getCart')->name('product.shoppingCart');
 Route::get('remove-to-cart/{id}', 'ProductController@removeToCart')->name('product.removeCart');
+Route::get('checkout', 'ProductController@getCheckout')->name('product.checkout');
 
 Route::get('/admin', 'HomeController@admin')->name('admin');
 

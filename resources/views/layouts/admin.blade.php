@@ -24,15 +24,19 @@
   <link rel="stylesheet" href="{{ asset('plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css') }}">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  
 
 
+
+  
 
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.5.6/css/buttons.dataTables.min.css">
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/fixedheader/3.1.2/css/fixedHeader.dataTables.min.css">
 
-   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+   <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"> -->
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
@@ -439,9 +443,25 @@ $(document).ready(function() {
     //  return fetch_data;
     // }
 
+    $("#checkout").click(function(){
+      var id = $(this).data('2');
+      var oldWallet = $(this).data('1');
+      var totalQty = $(this).data('3');
+      var token = $("#tablee .hdn-token").val();
+
+      var wallet = oldWallet - totalQty;
+
+         $.post('user/' + id,
+         {'id':id, 'wallet':wallet,'_token':token}, 
+         function(data){
+
+        
 
 
+          }); 
 
+
+    });   
 
 
     $(".add-cart").click(function(){
@@ -480,17 +500,9 @@ $(document).ready(function() {
 
         // });
 
-        $.post('user/' + id,
-         {'id':id, 'wallet':wallet,'_token':token}, 
-         function(data){
-
-        
-
-
-         });        
+       
 
       
-            console.log(pid);
      
     });   
     // $('.buy').popover({ trigger: "click"}); 

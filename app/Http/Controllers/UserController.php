@@ -73,7 +73,7 @@ class UserController extends Controller
        
         $user = User::findOrFail($request->id);
         $user->id = $request['id']; 
-        $user->wallet = $request['wallet'] - '1'; 
+        $user->wallet = $request['wallet']; 
         $user->save(); 
 
         

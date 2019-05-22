@@ -23,7 +23,7 @@ class Cart
     	$storedItem = [ 'qty' => 0, 'price' => $item->price, 'item' =>$item];
     	if($this->items){
     		if (array_key_exists($id, $this->items)){
-    			var_dump('Already');
+    			$storedItem = $this->items[$id];
     		}
     	}
     	$storedItem['qty']++;

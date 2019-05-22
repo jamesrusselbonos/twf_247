@@ -182,6 +182,26 @@ class ProductController extends Controller
         }
         return redirect()->route('product.shoppingCart');
             
+    }    
+
+    public function getCheckout(){
+
+
+  
+       if(!Session::has('cart')){
+            if(Auth::user()){
+
+              return view('shopping-cart');
+            }
+            else{
+              return redirect('login');
+            }
+            
+        }
+        $oldCart= Session::get('cart');
+        $cart = new Cart($oldCart);
+        // dd($cart->items);
+        return view('checkout', ['products' => $cart->items, 'totalPrice' => $cart->totalPrice]);
     }
 
 }
