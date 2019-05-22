@@ -204,7 +204,7 @@
               @endif">
               <i class="fas fa-th-list"></i>
               <p>
-                Product
+                Product List
               </p>
             </a>
           </li>
@@ -213,9 +213,9 @@
               @if($segment=='news')
               active
               @endif">
-              <i class="nav-icon fa fa-pie-chart"></i>
+              <i class="far fa-credit-card"></i>
               <p>
-                News
+                Load Account
               </p>
             </a>
           </li>
@@ -330,6 +330,7 @@ $(document).ready(function() {
         dom: 'Bfrtip',
         // "pageLength": 50,
         "bPaginate": false,
+        responsive: true,
 
         buttons: [
 

@@ -191,7 +191,7 @@ class ProductController extends Controller
        if(!Session::has('cart')){
             if(Auth::user()){
 
-              return view('shopping-cart');
+              return redirect()->route('product.index');
             }
             else{
               return redirect('login');

@@ -10,6 +10,7 @@
 
   	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
   	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.5.6/css/buttons.dataTables.min.css">
+  	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
   	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
   	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -17,6 +18,11 @@
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
   	
   	<style type="text/css">
+  		#example1 {
+
+  			margin:25px:
+
+  		}
   		#example1 img{
 
   			display:block; width:100%; height:auto;
@@ -25,7 +31,11 @@
 
 
   		#example1 td{
+  			max-width: 100px;
   			text-align: center;
+  			overflow: hidden;
+  			text-overflow: ellipsis;
+  			   white-space: nowrap;
 
   		}
   		.buts {
@@ -74,13 +84,13 @@
 
 </nav>
 
-
+	<div class="row">
 	<input id="hdn-token" type="hidden" name="_token" value="{{ csrf_token() }}">
-	<table id="example1" class="display nowrap table-responsive" style="width:100%">
+	<table id="example1" class="display nowrap table-responsive" style="width:100%; padding:5px;">
 	        <thead>
 	            <tr class="fixed-tr"  >
 
-	            		<th>Product Image</th>
+	            		<!-- <th>Product Image</th> -->
 	            		<th>Product Link</th>
 	            		<th>Brand</th>
 	            		<th>ASIN</th>
@@ -110,8 +120,8 @@
 	        	<input id="hdn-token" type="hidden" name="_token" value="{{ csrf_token() }}">
 	        	              <tr>
 	        	              
-	        	              	  <td><img src="{{ asset($product['item']['image']) }}" /></td>
-	        	              	  <td><a href="{{ $product['item']['product_page_link'] }}"> PRODUCT LINK</a></td> 
+	        	              	  <!-- <td><img src="{{ asset($product['item']['image']) }}" /></td> -->
+	        	              	  <td><a href="{{ $product['item']['product_page_link'] }}" target="_blank"> {{ $product['item']['product_page_link'] }}</a></td> 
 	        	              	      <td>{{ ucwords($product['item']['brand']) }}</td>
 	        	              	      <td>{{ $product['item']['asin'] }}</td>
 	        	              	      <td>${{ number_format($product['item']['prime_low_price'],2) }}</td>
@@ -132,7 +142,7 @@
 	        </tbody>
 
 	    </table>
-
+</div>
 	</body>
 
 	<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
@@ -166,6 +176,7 @@
 	    dom: 'Bfrtip',
 	    // "pageLength": 50,
 	    "bPaginate": false,
+	    responsive: true,
 
 	    buttons: [
 
@@ -179,12 +190,12 @@
 	                   text:      '<i class="fa fa-file-excel-o"></i>',
 	                   titleAttr: 'Excel',
 	                   title: 'TestFileName1'
-	               },
+	               },	               
 	               {
-	                   extend:    'pdfHtml5',
-	                   text:      '<i class="fa fa-file-pdf-o"></i>',
-	                   titleAttr: 'PDF',
-	                   title: 'TestFileName2'
+	                   extend:    'csvHtml5',
+	                   text:      '<i class="fas fa-file-csv"></i>',
+	                   titleAttr: 'CSV',
+	                   title: 'TestFileName3'
 	               }
 
 	               ]
