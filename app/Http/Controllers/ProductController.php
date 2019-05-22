@@ -29,7 +29,7 @@ class ProductController extends Controller
 
         $products = Product::all();
 
-        $solds = Sold::all();
+       
         // foreach ($solds as $sold) {
         //      dd($sold->uid);
         // }
@@ -48,7 +48,7 @@ class ProductController extends Controller
         // dd($products);
       if($user){
 
-        return view('product',compact('products', 'solds'));
+        return view('product',compact('products'));
       }
       else{
         return redirect('login');
