@@ -16,19 +16,40 @@
   	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
   	
   	<style type="text/css">
+  		
+  		#example1 {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#example1 td, #example1 th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#example1tr:nth-child(even){background-color: #f2f2f2;}
+
+#example1 tr:hover {background-color: #ddd;}
+
+#example1 th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+
+
   		#example1 {
 
   			margin:25px:
 
   		}
-  		#example1 img{
-
-  			display:block; width:100%; height:auto;
-
-  		}
-
+  		
 
   		#example1 td{
   			max-width: 100px;
@@ -84,9 +105,9 @@
 
 </nav>
 
-	<div class="row">
-	<input id="hdn-token" type="hidden" name="_token" value="{{ csrf_token() }}">
-	<table id="example1" class="display nowrap table-responsive" style="width:100%; padding:5px;">
+	<div class="container">
+	<input id="hdn-token" type="hidden" name="_token" value="{{ csrf_token() }}"><br>
+	<table id="example1" class="display nowrap table-responsive" style="max-width:100%;">
 	        <thead>
 	            <tr class="fixed-tr"  >
 
@@ -113,7 +134,6 @@
 	        </thead>
 	        <tbody>
 
-	        	{{ var_dump(auth()->user()->wallet) }}
 				
 	        	@foreach ($products as $product)
 	        	{{csrf_field()}}
@@ -171,8 +191,7 @@
 	  "targets": [ 0, 7 ],
 	  "orderable": false
 	  } ],
-	    scrollY:  '1000px',
-	    scrollX:  false,
+	    
 	    dom: 'Bfrtip',
 	    // "pageLength": 50,
 	    "bPaginate": false,
