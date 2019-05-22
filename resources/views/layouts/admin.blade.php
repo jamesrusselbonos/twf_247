@@ -59,7 +59,7 @@
         <a class="nav-link" data-widget="pushmenu" href="#"><i class="fa fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="{{ route('home')}}" class="nav-link">Home1</a>
+        <a href="{{ route('home')}}" class="nav-link">Home</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <a href="#" class="nav-link">Contact</a>
@@ -84,7 +84,7 @@
 
      <li style="padding:5px;"><a href="{{ route('product.shoppingCart') }}" style="color:rgba(0,0,0,.5); text-decoration: none;">
          <i class="fa fa-shopping-cart" aria-hidden="true"></i> Shopping Cart
-         <span style="background-color: #e65c00" class="badge">{{ Session::has('cart') ? Session::get('cart')->totalQty : '' }}</span>
+         <span style="background-color: #e65c00; color:white" class="badge">{{ Session::has('cart') ? Session::get('cart')->totalQty : '' }}</span>
      </a></li>
     @guest
      <li style="padding:5px">
@@ -98,10 +98,10 @@
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
+    <a href="{{ route('home') }}" class="brand-link">
       <img src="{{ asset('dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8">
-      <span class="brand-text font-weight-light">AdminLTE 3</span>
+      <span class="brand-text font-weight-light">24/7 Virtual Agent</span>
     </a>
 
     <!-- Sidebar -->
@@ -115,8 +115,8 @@
           @guest
 
           @else
-          <a href="" class="d-block">{{ Auth::user()->name }}</a>
-
+          <a href="#" class="d-block">{{ ucwords(Auth::user()->name) }}</a>
+          <small><a href="#" style="color:#a6a6a6"><i class="fas fa-pencil-alt" style="color:#a6a6a6"></i> Edit Profile</a></small>
           @endguest
          
         </div>
@@ -187,7 +187,7 @@
             
           </li>
           <li class="nav-item">
-            <a href="" class="nav-link 
+            <a href="#" class="nav-link 
               @if($segment=='categories')
               active
               @endif">
@@ -209,7 +209,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="" class="nav-link 
+            <a href="#" class="nav-link 
               @if($segment=='news')
               active
               @endif">
@@ -224,7 +224,7 @@
             <a class="nav-link" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                                     <i class="nav-icon fa fa-circle-o text-danger"></i>
+                                                     <i class="fas fa-sign-out-alt"></i>
                                         {{ __('Logout') }}
                                     </a>
 

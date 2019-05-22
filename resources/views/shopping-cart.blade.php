@@ -32,9 +32,9 @@
 
 
 @section('content')
-
+<div class="container" id="tablee">
 	@if(Session::has('cart'))
-			<div class="container" id="tablee">
+			
 				<input id="hdn-token" class="hdn-token" type="hidden" name="_token" value="{{ csrf_token() }}">
 				<h1>Shopping Cart</h1>
 				<table id="test" class="display nowrap table-responsive-sm table table-striped" cellspacing="0" width="100%">
@@ -98,12 +98,12 @@
 	@else
 	
 		<div class="row">
-			<div class="col-md-6">
+			<div class="col-md-12">
 				<center><h1>No Item</h1></center>
 			</div>
 		</div>
-</div>
-	@endif	
 
+	@endif	
+</div>
 @endsection
 
