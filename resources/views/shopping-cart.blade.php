@@ -33,6 +33,28 @@
 
 @section('content')
 <div class="container" id="tablee">
+	<!-- Modal -->
+	<div class="modal fade" id="modal_confirmation" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title" id="exampleModalLabel">Confirmation</h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body">
+
+	      	Are you sure?
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+	        <a href="" id="yes" class="btn btn-primary yes">Yes</a>
+	        <input id="hdn-pid" class="hdn-pid" type="hidden" name="pid" value="">
+	      </div>
+	    </div>
+	  </div>
+	</div>
 	@if(Session::has('cart'))
 			
 				<input id="hdn-token" class="hdn-token" type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -70,10 +92,10 @@
 				        	                  <td>{{ $product['item']['competitive_sellers'] }}</td>
 				        	                  <td>{{ $product['item']['our_sales_equity_units_mo'] }}</td>
 				        	                  <td>${{ number_format($product['item']['our_sales_equity_revenue_mo'],2) }}</td>
-
-
-				        	                  <td><a href="{{ route('product.removeCart', ['id' => $product['item']['pid']]) }}" data-1="{{ auth()->user()->wallet }}"  id="buy" id1=" {{auth()->user()->id}} " class="btn btn-danger buy " 
-				        	                  	pid ="{{ $product['item']['pid'] }}" image ="{{ asset($product['item']['image']) }}" >Remove</a></td>
+				        	                 <!--  <td><a href="{{ route('product.removeCart', ['id' => $product['item']['pid']]) }}" data-1="{{ auth()->user()->wallet }}"  id="buy" id1=" {{auth()->user()->id}} " class="btn btn-danger buy " 
+				        	                  	pid ="{{ $product['item']['pid'] }}" image ="{{ asset($product['item']['image']) }}" >Remove</a></td> -->
+		 	        	                   		<td><button type="button" data-1="{{ auth()->user()->wallet }}" data-toggle="modal" data-target="#modal_confirmation" id="remove-cart" id1=" {{auth()->user()->id}} " class="btn btn-danger remove-cart " 
+				        	                  	pid ="{{ $product['item']['pid'] }}">Remove</button></td>
 		 	        	               
 				        	              </tr>
 				        	 @endforeach

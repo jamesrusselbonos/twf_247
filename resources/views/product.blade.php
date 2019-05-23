@@ -153,19 +153,19 @@
 	        						
 	        					</div>
 	        					<div class="details col-md-6">
-	        						<center><h3 class="product-title">Product Details</h3></center>
+	        						<h3 class="product-title">Product Details</h3>
 	        						
 	        						<div class="row">
-	        							<div class="numb col-md-6">
-		        							<h4 class="price"></h4>
-		        							<label id="units_mo"></label> 
-		        							<label id="reven_mo"></label>
-		        							<label id="sellers"></label>
-		        							<label id="eq_units"></label>
+	        							<div class="numb col-md-12">
+		        							<h5 class="price"></h5> 
+		        							<label id="units_mo"></label> </br>
+		        							<label id="reven_mo"></label> </br>
+		        							<label id="sellers"></label> </br>
+		        							<label id="eq_units"></label> </br>
 		        							<label id="eq_reven"></label>
 		        						</div>
 
-	        							<div class="numb col-md-6">
+	<!--         							<div class="numb col-md-6">
 			        						<p id="brand"></p>
 			        						<p id="asin"></p>
 			        						<p id="address"></p>
@@ -176,7 +176,7 @@
 			        						<p id="web1">Website: <a href="" target="_blank" id="web"></a></p>
 			        						<p id="email1">Email: <a href="" target="_blank" id="email"></a></p>
 	        						
-	        							</div>
+	        							</div> -->
 		        						
 	        						</div>
 	        					</div>
@@ -240,7 +240,7 @@
 	        	{{csrf_field()}}
 	        	<input id="hdn-token" type="hidden" name="_token" value="{{ csrf_token() }}">
 	        	              <tr>
-	        	              	@if( auth()->user()->wallet > 0 )
+	        	              	
 	        	              	  <td><img src="{{ asset($product->image) }}" /></td>
 	        	                  <td>${{ number_format($product->prime_low_price,2) }}</td>
 	        	                  <td>{{ $product->total_units_sold_mo }}</td>
@@ -248,24 +248,15 @@
 	        	                  <td>{{ $product->competitive_sellers }}</td>
 	        	                  <td>{{ $product->our_sales_equity_units_mo }}</td>
 	        	                  <td>${{ number_format($product->our_sales_equity_revenue_mo,2) }}</td>
-	        	                   <!-- data-placement="left" data-toggle="popover"  data-content="My popover content.My popover content.My popover content.My popover content."  -->
-	        	                  <!-- onclick="ConfirmDialog()" data-toggle="modal" data-target="#exampleModalCenter"  -->
-	        	                  <!-- <td><a href=" {{ $product->product_page_link }} " data-toggle="modal" data-target="#exampleModalCenter" data-1="{{ auth()->user()->wallet }}" data-2=" {{auth()->user()->id}} " data-3="{{ $product->pid }}" class="btn btn-warning buy "> Buy Now </a></td> -->
-	        	                  <!-- <td><button type="button"  data-1="{{ auth()->user()->wallet }}"  data-toggle="modal" data-target="#exampleModalCenter" pid="{{ $product->pid }}" id="buy" id1=" {{auth()->user()->id}} " class="btn btn-warning buy ">Buy Now</button></td> -->
+	        	              <!--     prod_link ="{{ $product->product_page_link }}" brand ="{{ $product->brand }}" asin="{{ $product->asin }}"  website ="{{ $product->website_url }}" fname ="{{ $product->firstname }}"  lname ="{{ $product->lastname }}" address ="{{ $product->address }}"  
+	        	                  	contact_no="{{ $product->contact_no}}" position="{{ $product->position}}" email="{{ $product->email}}" -->
+	        	          @if( auth()->user()->wallet > 0 )
 	        	                  <td><button type="button"  data-1="{{ auth()->user()->wallet }}"  id="buy" id1=" {{auth()->user()->id}} " class="btn btn-warning buy " data-toggle="modal" data-target="#exampleModalCenter"
-	        	                  	pid ="{{ $product->pid }}" image ="{{ asset($product->image) }}" brand ="{{ $product->brand }}" asin="{{ $product->asin }}" prod_link ="{{ $product->product_page_link }}" price ="{{ $product->prime_low_price }}" unit_sold_mo ="{{ $product->total_units_sold_mo }}" reven_mo ="{{ $product->total_revenue_mo}}" 
-	        	                  	sellers ="{{ $product->competitive_sellers}}" eq_units ="{{ $product->our_sales_equity_units_mo}}" eq_reven ="{{ $product->our_sales_equity_revenue_mo }}" website ="{{ $product->website_url }}" fname ="{{ $product->firstname }}"  lname ="{{ $product->lastname }}" address ="{{ $product->address }}"  
-	        	                  	contact_no="{{ $product->contact_no}}" position="{{ $product->position}}" email="{{ $product->email}}">Buy Now</button></td>
-<!-- 	        	               <!- target="_blank"   <td><button type="button"  id="buy" target="_blank" data-1="{{ auth()->user()->wallet }}" data-2=" {{auth()->user()->id}} " data-3="{{ $product->pid }}" class="btn btn-warning buy " >Buy Now</button></td>
- -->	        	              @elseif ( auth()->user()->wallet <= 0 )
+	        	                  	pid ="{{ $product->pid }}" image ="{{ asset($product->image) }}"  price ="{{ $product->prime_low_price }}" unit_sold_mo ="{{ $product->total_units_sold_mo }}" reven_mo ="{{ $product->total_revenue_mo}}" 
+	        	                  	sellers ="{{ $product->competitive_sellers}}" eq_units ="{{ $product->our_sales_equity_units_mo}}" eq_reven ="{{ $product->our_sales_equity_revenue_mo }}" >Buy Now</button></td>
+	        	              @elseif ( auth()->user()->wallet <= 0 )
 
-	        	                	<td><img src="{{ asset($product->image) }}" /></td>
-	        	                  <td>{{ $product->prime_low_price }}</td>
-	        	                  <td>{{ $product->total_units_sold_mo }}</td>
-	        	                  <td>{{ $product->total_revenue_mo }}</td>
-	        	                  <td>{{ $product->competitive_sellers }}</td>
-	        	                  <td>{{ $product->our_sales_equity_units_mo }}</td>
-	        	                  <td>{{ $product->our_sales_equity_revenue_mo }}</td>
+	        	                
 	        	                    <td><button type="button"  id="buy1" class="btn btn-warning" >Buy Credits</button></td>
 
 	        	                @endif

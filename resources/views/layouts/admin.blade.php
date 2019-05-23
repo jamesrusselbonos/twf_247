@@ -445,38 +445,28 @@ $(document).ready(function() {
 
 
 
-       //    $.ajax({
-       //        type: "get",
-       //        url: 'product_details/' + pid ,
-       //        data: 'pid':pid,
-       //        success: function(data) {
-       //            console.log(data);
-       //        }
-       //    })
-       //  $.get('product_details/' + pid ,
-       //   {'pid':pid}, 
-       //   function(data){
-
-        // // console.log(data['pid']);
-
-       //   });
-
-        // $.ajax({
-        //  url: 'product_details/' + pid,
-        //  method: "GET",
-        //  data: 'pid',pid,
-        //  success:function(data){
-            
-        //  }
-
-        // });
 
        
 
       
      
     });   
-    // $('.buy').popover({ trigger: "click"}); 
+    $(".remove-cart").click(function(){
+
+      var id = $(this).attr('pid');
+
+      $("#modal_confirmation .hdn-pid").val( id );
+      $("#yes").attr("href", 'remove-to-cart/' + id );
+
+
+
+    });  
+
+   
+
+  function formatNumber(num) {
+    return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+  }
 
     $(".buy").click(function(){
       // $("[data-toggle='popover']").popover('toggle');
@@ -487,72 +477,50 @@ $(document).ready(function() {
       var image = $(this).attr("image");      
       var brand = $(this).attr("brand");
       var asin = $(this).attr("asin");      
-      var prod_link = $(this).attr("prod_link");
       var price = $(this).attr("price");      
       var unit_sold_mo = $(this).attr("unit_sold_mo");
       var reven_mo = $(this).attr("reven_mo");      
       var sellers = $(this).attr("sellers");
       var eq_units = $(this).attr("eq_units");      
       var eq_reven = $(this).attr("eq_reven");
-      var website = $(this).attr("website");      
-      var fname = $(this).attr("fname");
-      var lname = $(this).attr("lname");
-      var address = $(this).attr("address");      
-      var contact_no = $(this).attr("contact_no");
-      var position = $(this).attr("position");
-      var email = $(this).attr("email");
-      var fullname =  fname + " " + lname;
-      console.log(position);
+      // var website = $(this).attr("website");      
+      // var fname = $(this).attr("fname");
+      // var lname = $(this).attr("lname");
+      // var address = $(this).attr("address");      
+      // var contact_no = $(this).attr("contact_no");
+      // var position = $(this).attr("position");
+      // var email = $(this).attr("email");
+      // var fullname =  fname + " " + lname;
+      // var prod_link = $(this).attr("prod_link");
       var token = $("#exampleModalCenter .hdn-token").val();
 
       $("#exampleModalCenter .hdn-pid").val( pid );
       $("#exampleModalCenter .hdn-wallet").val( wallet );
-      $(".numb h4").html("Prime Price: $" + price);
-      document.getElementById('units_mo').innerHTML ="Units Sold/Mo: " + unit_sold_mo;
-      document.getElementById('reven_mo').innerHTML ="Revenue/Mo: $" + reven_mo;
+      $(".numb h5").html("Prime Price: $" + formatNumber(price));
+      document.getElementById('units_mo').innerHTML ="Units Sold/Mo: " + formatNumber(unit_sold_mo);
+      document.getElementById('reven_mo').innerHTML ="Revenue/Mo: $" + formatNumber(reven_mo);
       document.getElementById('sellers').innerHTML ="Competitive Sellers: " + sellers;
-      document.getElementById('eq_units').innerHTML ="Equity Units/Mo: " + eq_units;
-      document.getElementById('eq_reven').innerHTML ="Equity Revenue/Mo: $" + eq_reven;
-      $("#prod_link").attr("href", prod_link);
-      $("#web").attr("href", website);
-      $("#email").attr("href", email);
-      $("#web").text(website);
-      $("#email").text(email);
-      // document.getElementById("prod_link").innerHTML = "Product Page Link: " + prod_link;
-      document.getElementById("brand").innerHTML = "Brand: " + brand;
-      document.getElementById("asin").innerHTML = "ASIN: " + asin;
-      document.getElementById("name").innerHTML = "Name: " + fullname;      
-      document.getElementById("position").innerHTML = "Position: " + position;
-      document.getElementById("address").innerHTML = "Address: " + address;
-      document.getElementById("contact").innerHTML = "Contact No: " + contact_no;
+      document.getElementById('eq_units').innerHTML ="Equity Units/Mo: " + formatNumber(eq_units);
+      document.getElementById('eq_reven').innerHTML ="Equity Revenue/Mo: $" + formatNumber(eq_reven);
+      // $("#prod_link").attr("href", prod_link);
+      // $("#web").attr("href", website);
+      // $("#email").attr("href", email);
+      // $("#web").text(website);
+      // $("#email").text(email);
+     
+      // document.getElementById("brand").innerHTML = "Brand: " + brand;
+      // document.getElementById("asin").innerHTML = "ASIN: " + asin;
+      // document.getElementById("name").innerHTML = "Name: " + fullname;      
+      // document.getElementById("position").innerHTML = "Position: " + position;
+      // document.getElementById("address").innerHTML = "Address: " + address;
+      // document.getElementById("contact").innerHTML = "Contact No: " + contact_no;
 
       $("#pic").attr("src", image);
       $("#add-cart").attr("href", "/add-to-cart/" + pid );
-      // document["#pic"].src = image;
-      // $("#exampleModalCenter .prod_img").src = "test";
-      // $('#exampleModalCenter-list').append('<div class="tab-pane active prod_img"><img src="{{ asset('images/') }} ' + image +'" </div>');
 
-       //  $.get('product/' + pid ,
-       //   {'pid':pid}, 
-       //   function(data){
-
-        // // console.log(data['pid']);
-
-       //   });
     });
     
 
-     // function getConfirmation() {
-   //             var text = confirm("Do you want to continue ?");
-   //             if( text == true ) {
-   //                  $.post('user/' + id, {'id':id,'wallet':wallet,'pid':pid,'_token':$('input[name=_token]').val()}, function(data){
-   //                 location.reload();
-                    
-   //                });
-   //             } else {
-   //                document.write ("User does not want to continue!");
-   //                return false;
-   //             }
-   //          }
+
 } );
 </script>
