@@ -84,18 +84,47 @@ class AddproductController extends Controller
             $fileNameToStore = "noimage.jpg";
         }
 
+        if($request->prime_low_price && $request->total_units_sold_mo && $request->total_revenue_mo && $request->our_sales_equity_units_mo && $request->our_sales_equity_revenue_mo){
+
+            $price = $request->prime_low_price;
+
+            $newPrice = str_replace( ',', '', $price );
+
+
+            $units_mo = $request->total_units_sold_mo;
+
+            $new_units_mo = str_replace( ',', '', $units_mo );
+
+
+            $reven_mo = $request->total_revenue_mo;
+
+            $new_reven_mo = str_replace( ',', '', $reven_mo );
+
+
+            $sales_units = $request->our_sales_equity_units_mo;
+
+            $new_sales_units = str_replace( ',', '', $sales_units );
+
+
+            $sales_reven = $request->our_sales_equity_revenue_mo;
+
+            $new_sales_reven = str_replace( ',', '', $sales_reven );
+
+
+        }
+
 
         $product = new Product;
         $product->image = $fileNameToStore;
         $product->brand = $request->brand;
         $product->asin = $request->asin;
         $product->product_page_link = $request->product_page_link;
-        $product->prime_low_price = $request->prime_low_price;
-        $product->total_units_sold_mo = $request->total_units_sold_mo;
-        $product->total_revenue_mo = $request->total_revenue_mo;
+        $product->prime_low_price = $newPrice;
+        $product->total_units_sold_mo =  $new_units_mo;
+        $product->total_revenue_mo =  $new_reven_mo;
         $product->competitive_sellers = $request->competitive_sellers;
-        $product->our_sales_equity_units_mo = $request->our_sales_equity_units_mo;
-        $product->our_sales_equity_revenue_mo = $request->our_sales_equity_revenue_mo;
+        $product->our_sales_equity_units_mo = $new_sales_units;
+        $product->our_sales_equity_revenue_mo = $new_sales_reven;
         $product->website_url = $request->website_url;
         $product->firstname = $request->firstname;
         $product->lastname = $request->lastname;

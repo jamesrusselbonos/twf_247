@@ -51,6 +51,7 @@
 	        <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
 	        <a href="" id="yes" class="btn btn-primary yes">Yes</a>
 	        <input id="hdn-pid" class="hdn-pid" type="hidden" name="pid" value="">
+	        <input id="hdn-token" class="hdn-token" type="hidden" name="_token" value="{{ csrf_token() }}">
 	      </div>
 	    </div>
 	  </div>
@@ -87,10 +88,10 @@
 				        	              
 				        	              	  <td><img src="{{ asset($product['item']['image']) }}" /></td>
 				        	                  <td>${{ number_format($product['item']['prime_low_price'],2) }}</td>
-				        	                  <td>{{ $product['item']['total_units_sold_mo'] }}</td>
+				        	                  <td>{{ number_format($product['item']['total_units_sold_mo']) }}</td>
 				        	                  <td>${{ number_format($product['item']['total_revenue_mo'],2) }}</td>
 				        	                  <td>{{ $product['item']['competitive_sellers'] }}</td>
-				        	                  <td>{{ $product['item']['our_sales_equity_units_mo'] }}</td>
+				        	                  <td>{{ number_format($product['item']['our_sales_equity_units_mo']) }}</td>
 				        	                  <td>${{ number_format($product['item']['our_sales_equity_revenue_mo'],2) }}</td>
 				        	                 <!--  <td><a href="{{ route('product.removeCart', ['id' => $product['item']['pid']]) }}" data-1="{{ auth()->user()->wallet }}"  id="buy" id1=" {{auth()->user()->id}} " class="btn btn-danger buy " 
 				        	                  	pid ="{{ $product['item']['pid'] }}" image ="{{ asset($product['item']['image']) }}" >Remove</a></td> -->

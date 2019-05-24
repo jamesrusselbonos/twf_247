@@ -87,7 +87,13 @@
     <ul class="navbar-nav ml-auto">
      
 
-     <li style="padding:5px;"><a href="{{ route('product.shoppingCart') }}" style="color:rgba(0,0,0,.5); text-decoration: none;">
+     <li style="padding:10px;"><i class="fas fa-dollar-sign"></i> Credits Owned: {{ Auth::user()->wallet }} <a href="#" style="color:rgba(0,0,0,.5); text-decoration: none;">
+          <i class="far fa-plus-square"></i>
+     </a></li>     
+ 
+
+
+     <li style="padding:10px;"><a href="{{ route('product.shoppingCart') }}" style="color:rgba(0,0,0,.5); text-decoration: none;">
          <i class="fa fa-shopping-cart" aria-hidden="true"></i> Shopping Cart
          <span style="background-color: #e65c00; color:white" class="badge">{{ Session::has('cart') ? Session::get('cart')->totalQty : '' }}</span>
      </a></li>
@@ -104,7 +110,7 @@
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="{{ route('home') }}" class="brand-link">
-      <img src="{{ asset('images/icon.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+      <img src="{{ asset('images/icon.png') }}" alt="24/7 Logo" class="brand-image img-circle"
            style="opacity: .8">
       <span class="brand-text font-weight-light">24/7 Virtual Agent</span>
     </a>
@@ -118,10 +124,10 @@
         </div>
         <div class="info">
           @guest
-
+<!-- {{ route('user.edit', Auth::user()->id) }} -->
           @else
           <a href="#" class="d-block">{{ ucwords(Auth::user()->name) }}</a>
-          <small><a href="#" style="color:#a6a6a6"><i class="fas fa-pencil-alt" style="color:#a6a6a6"></i> Edit Profile</a></small>
+          <small><a href="" style="color:#a6a6a6"><i class="fas fa-pencil-alt" style="color:#a6a6a6"></i> Edit Profile</a></small>
           @endguest
          
         </div>
@@ -376,7 +382,7 @@ $(document).ready(function() {
 
       },
       "columnDefs": [ {
-      "targets": [ 0, 7 ],
+      "targets": [ 0 ],
       "orderable": false
       } ],
         scrollY:  '1000px',
@@ -445,17 +451,37 @@ $(document).ready(function() {
       var pid = $("#exampleModalCenter .hdn-pid").val();
       var id = $("#exampleModalCenter .hdn-id").val();
       var token = $("#exampleModalCenter .hdn-token").val();
-      console.log(id, pid);
+      
 
-
-
-
-
-       
+      $.post('update-product/' + pid,
+      {'pid':pid,'_token':token}, 
+      function(data){
 
       
+
+
+       }); 
+
      
-    });   
+    });  
+     $(".yes").click(function(){
+
+      var pid = $("#modal_confirmation .hdn-pid").val();
+      var token = $("#modal_confirmation .hdn-token").val();
+      console.log(token);
+
+      $.post('re-update/' + pid,
+      {'pid':pid,'_token':token}, 
+      function(data){
+
+      
+ console.log(pid);
+
+       }); 
+
+     }); 
+
+
     $(".remove-cart").click(function(){
 
       var id = $(this).attr('pid');

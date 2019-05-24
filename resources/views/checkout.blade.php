@@ -89,19 +89,7 @@
     </li>
   </ul>
 
-  <!-- SEARCH FORM -->
-  <form class="form-inline ml-3">
-    <div class="input-group input-group-sm">
-      <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
-      <div class="input-group-append">
-        <button class="btn btn-navbar" type="submit">
-          <i class="fa fa-search"></i>
-        </button>
-      </div>
-    </div>
-  </form>
-
-  <!-- Right navbar links -->
+ 
 
 </nav>
 
@@ -145,10 +133,10 @@
 	        	              	      <td>{{ ucwords($product['item']['brand']) }}</td>
 	        	              	      <td>{{ $product['item']['asin'] }}</td>
 	        	              	      <td>${{ number_format($product['item']['prime_low_price'],2) }}</td>
-	        	              	      <td>{{ $product['item']['total_units_sold_mo'] }}</td>
+	        	              	      <td>{{ number_format($product['item']['total_units_sold_mo']) }}</td>
 	        	              	      <td>${{ number_format($product['item']['total_revenue_mo'],2) }}</td>
 	        	              	      <td>{{ $product['item']['competitive_sellers'] }}</td>
-	        	              	      <td>{{ $product['item']['our_sales_equity_units_mo'] }}</td>
+	        	              	      <td>{{ number_format($product['item']['our_sales_equity_units_mo']) }}</td>
 	        	              	      <td>${{ number_format($product['item']['our_sales_equity_revenue_mo'],2) }}</td>
 	        	              	  	  <td>{{ ucwords($product['item']['firstname']) }} {{ ucwords($product['item']['lastname']) }}</td>
 	        	              	  	  <td>{{ ucwords($product['item']['position']) }}</td>

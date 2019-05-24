@@ -218,51 +218,58 @@
 	                
 
 	            </tr>	            
-<!-- 	            <tr class="hidden-tr">
-	            	<th style="">Product Image</th>
-	                <th>Prime Low Price</th>
-	                <th class ="resize-col">Units Sold/Mo</th>
-	                <th class ="resize-col">Revenue/Mo</th>
-	                <th class ="resize-col">Competitive Sellers</th>
-	                <th>Sales Equity</br> (Units/Mo)</th>
-	                <th class ="resize-col">Sales Equity (Revenue/Mo)</th>
-	                <th>Action</th>
-	                
-
-	            </tr> -->
 	        </thead>
 	        <tbody>
 
-<!-- data-toggle="modal" data-target="#exampleModalCenter"  -->
 	        
 				
-	        	@foreach ($products as $product)
-	        	{{csrf_field()}}
+	   
+	        	@foreach($products as $product)
+
+	        		@if($product->deleted == 0)
+
+	        							 <tr>
+	        		        	              	
+	        		        	              	  <td><img src="{{ asset($product->image) }}" /></td>
+	        		        	                  <td>${{ number_format($product->prime_low_price,2) }}</td>
+	        		        	                  <td>{{ number_format($product->total_units_sold_mo) }}</td>
+	        		        	                  <td>${{ number_format($product->total_revenue_mo,2) }}</td>
+	        		        	                  <td>{{ $product->competitive_sellers }}</td>
+	        		        	                  <td>{{ number_format($product->our_sales_equity_units_mo) }}</td>
+	        		        	                  <td>${{ number_format($product->our_sales_equity_revenue_mo,2) }}</td>
+	        		        	          @if( auth()->user()->wallet > 0 )
+	        		        	       
+	        		        	                  <td><button type="button"  data-1="{{ auth()->user()->wallet }}"  id="buy" id1=" {{auth()->user()->id}} " class="btn btn-warning buy " data-toggle="modal" data-target="#exampleModalCenter"
+	        		        	                  	pid ="{{ $product->pid }}" image ="{{ asset($product->image) }}"  price ="{{ $product->prime_low_price }}" unit_sold_mo ="{{ $product->total_units_sold_mo }}" reven_mo ="{{ $product->total_revenue_mo}}" 
+	        		        	                  	sellers ="{{ $product->competitive_sellers}}" eq_units ="{{ $product->our_sales_equity_units_mo}}" eq_reven ="{{ $product->our_sales_equity_revenue_mo }}" >Buy Now</button></td>
+	        		        	              @elseif ( auth()->user()->wallet <= 0 )
+
+	        		        	                
+	        		        	                    <td><button type="button"  id="buy1" class="btn btn-warning" >Buy Credits</button></td>
+
+	        		        	                @endif
+	        		        	                  
+	        		        	              </tr>
+
+	       			@endif
+
+				
+						
+	      
+
+	        	              
+
+	        	@endforeach
+	        	
+				
 	        	<input id="hdn-token" type="hidden" name="_token" value="{{ csrf_token() }}">
-	        	              <tr>
-	        	              	
-	        	              	  <td><img src="{{ asset($product->image) }}" /></td>
-	        	                  <td>${{ number_format($product->prime_low_price,2) }}</td>
-	        	                  <td>{{ $product->total_units_sold_mo }}</td>
-	        	                  <td>${{ number_format($product->total_revenue_mo,2) }}</td>
-	        	                  <td>{{ $product->competitive_sellers }}</td>
-	        	                  <td>{{ $product->our_sales_equity_units_mo }}</td>
-	        	                  <td>${{ number_format($product->our_sales_equity_revenue_mo,2) }}</td>
-	        	              <!--     prod_link ="{{ $product->product_page_link }}" brand ="{{ $product->brand }}" asin="{{ $product->asin }}"  website ="{{ $product->website_url }}" fname ="{{ $product->firstname }}"  lname ="{{ $product->lastname }}" address ="{{ $product->address }}"  
-	        	                  	contact_no="{{ $product->contact_no}}" position="{{ $product->position}}" email="{{ $product->email}}" -->
-	        	          @if( auth()->user()->wallet > 0 )
-	        	                  <td><button type="button"  data-1="{{ auth()->user()->wallet }}"  id="buy" id1=" {{auth()->user()->id}} " class="btn btn-warning buy " data-toggle="modal" data-target="#exampleModalCenter"
-	        	                  	pid ="{{ $product->pid }}" image ="{{ asset($product->image) }}"  price ="{{ $product->prime_low_price }}" unit_sold_mo ="{{ $product->total_units_sold_mo }}" reven_mo ="{{ $product->total_revenue_mo}}" 
-	        	                  	sellers ="{{ $product->competitive_sellers}}" eq_units ="{{ $product->our_sales_equity_units_mo}}" eq_reven ="{{ $product->our_sales_equity_revenue_mo }}" >Buy Now</button></td>
-	        	              @elseif ( auth()->user()->wallet <= 0 )
+	        	             
+	     
 
-	        	                
-	        	                    <td><button type="button"  id="buy1" class="btn btn-warning" >Buy Credits</button></td>
-
-	        	                @endif
-	        	                  
-	        	              </tr>
-	        	 @endforeach
+	        	
+	        	{{csrf_field()}}
+	
+	        	
 	        </tbody>
 	        <tfoot>
 	            <tr>

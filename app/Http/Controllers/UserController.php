@@ -47,7 +47,9 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+
+        return $id;
+        return view('update-profile');
     }
 
     /**

@@ -13,6 +13,16 @@ use App\Cart;
 
 class ProductController extends Controller
 {
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware(['auth', 'verified']);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -26,10 +36,23 @@ class ProductController extends Controller
         //             ->join('solds', 'products.pid', '=', 'solds.pid')
         //             ->select('products.*', 'solds.uid')
         //             ->get();
-
+    
         $products = Product::all();
+        // $solds = Sold::where('uid', $user->id);
+        
+        // $solds = DB::table("solds")->select("pid")
+        //             ->where("uid", "=", $user->id);
+        // $products = DB::table("products")->select("pid")
+        //             ->union($solds)
+        //             ->get();   
+        // $solds = DB::table("solds");
+        // $products = DB::table("products");
 
-       
+        // $products = DB::select('SELECT  FROM `products` UNION SELECT * from solds where uid = ?',[Auth::user()->id]);
+
+              
+
+        
         // foreach ($solds as $sold) {
         //      dd($sold->uid);
         // }
@@ -46,7 +69,8 @@ class ProductController extends Controller
         // $user = User:: all();
         // // // $user = Auth::user();
         // dd($products);
-      if($user){
+
+       if($user){
 
         return view('product',compact('products'));
       }
@@ -143,6 +167,8 @@ class ProductController extends Controller
 
     public function getAddToCart(Request $request, $id)
     {
+
+
         $product = Product::find($id);
         $oldCart = Session::has('cart') ? Session::get('cart') : null;
         $cart = new Cart($oldCart);
@@ -151,6 +177,36 @@ class ProductController extends Controller
         $request->session()->put('cart', $cart);
         // dd($request->session()->get('cart'));
         return redirect()->route('product.index');
+//////////////////////////NEW CART ALERT///////////////////////////////////////
+
+        //  $product = Product::find($id);
+        //       $products = session('cart');
+        //       $a = true;
+        //       if($products != null) {
+        //       foreach ($products as $pro) {
+        //         if($product->name == $pro->name){
+        //           $a = true;
+        //           break;
+        //         }
+        //         else {
+        //           $a = false;
+        //         }
+
+        //       }
+        //       if($a == false)
+        //       {
+        //         Session::push('cart', $product);
+        //       }
+        // }
+        //  else {
+        //   Session::push('cart', $product);
+        // }
+
+        //       return back();
+
+
+
+              ///////////////////////////////////////////////////////
     }
     public function getCart(){
 
@@ -204,6 +260,29 @@ class ProductController extends Controller
         Session::forget('cart');
         // dd($cart->items);
         return view('checkout', ['products' => $cart->items, 'totalPrice' => $cart->totalPrice]);
+    }
+
+   /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function updateProduct(Request $request, $id){
+
+       $product = Product::findOrFail($request->id);
+       $product->pid = $request['pid']; 
+       $product->deleted = 1; 
+       $product->save(); 
+    }
+
+    public function reUpdate(Request $request, $id){
+
+       $product = Product::findOrFail($request->id);
+       $product->pid = $request['pid']; 
+       $product->deleted = 0; 
+       $product->save(); 
     }
 
 }

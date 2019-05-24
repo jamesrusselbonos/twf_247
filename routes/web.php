@@ -24,6 +24,8 @@ Route::resource('product', 'ProductController');
 Route::resource('user', 'UserController');
 
 Route::get('/product', 'ProductController@index')->name('product.index');
+Route::post('/update-product/{id}', 'ProductController@updateProduct')->name('product.updateProduct');
+Route::post('/re-update/{id}', 'ProductController@reUpdate')->name('product.reUpdate');
 Route::get('add-to-cart/{id}', 'ProductController@getAddToCart')->name('product.addToCart');
 Route::get('/shopping-cart', 'ProductController@getCart')->name('product.shoppingCart');
 Route::get('remove-to-cart/{id}', 'ProductController@removeToCart')->name('product.removeCart');
@@ -37,9 +39,11 @@ Route::get('/product_details/{product}', 'ProductController@show');
 Route::get('/test/{id}', 'TestController@show');
 
 Route::post('/user/{user}', 'UserController@update');
+
+Route::get('/user/{user}', 'UserController@show')->name('user.edit');
 // Route::post('update', 'UserController@update');
 
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home');

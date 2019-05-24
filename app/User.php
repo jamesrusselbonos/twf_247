@@ -6,7 +6,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use Notifiable;
 
@@ -19,6 +19,7 @@ class User extends Authenticatable
         'name', 'email', 'password', 'wallet',
     ];
 
+
     /**
      * The attributes that should be hidden for arrays.
      *
@@ -27,6 +28,10 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+    public function setPasswordAttribute($password)
+    {   
+        $this->attributes['password'] = bcrypt($password);
+    }
 
     /**
      * The attributes that should be cast to native types.
@@ -37,8 +42,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function sold()
-    {
-        return $this->hasMany('App\Sold', 'id', 'uid');
-    }
+    // public function sold()
+    // {
+    //     return $this->hasMany('App\Sold', 'id', 'uid');
+    // }
 }
