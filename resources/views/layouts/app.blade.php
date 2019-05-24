@@ -12,12 +12,14 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
+   <!--  <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css"> -->
+   <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
     
 
 
@@ -32,12 +34,124 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
+    <style type="text/css">
+        .bg{
+            width: 100%; height: 120vh; 
+
+         background: rgb(27,25,28);
+         background: -moz-linear-gradient(157deg, rgba(27,25,28,1) 0%, rgba(60,34,33,1) 100%);
+         background: -webkit-linear-gradient(157deg, rgba(27,25,28,1) 0%, rgba(60,34,33,1) 100%);
+         background: linear-gradient(157deg, rgba(27,25,28,1) 0%, rgba(60,34,33,1) 100%);
+         filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#1b191c",endColorstr="#3c2221",GradientType=1);
+
+            position: absolute;
+            top: 0; 
+        }
+        .card{
+            position: relative;
+            z-index: 999;
+
+           /* margin: auto;*/
+
+            background-color: transparent;
+
+            border:none;
+
+            /*margin-top: 0px;*/
+
+        }
+        .n_active{
+            padding: 10px 10px 10px 10px;
+
+            width: 100px;
+
+            border-radius: 30px;
+
+            color: #fff;
+        }
+        .n_active:hover{
+            padding: 10px 10px 10px 10px;
+
+            width: 100px;
+
+            border-radius: 30px;
+
+            border: solid;
+            border-color: #fff;
+            border-width: 2px;
+
+           /* transition: all 500ms ease;*/
+
+           cursor: pointer;
+        }
+        .active{
+            color: #3c2221;
+            padding: 10px 10px 10px 10px;
+
+            width: 100px;
+
+            background-color: #fff;
+            border-radius: 30px;
+        }
+        #email, #password, #name, #password-confirm{
+            width: 100%;
+            height: 40px;
+
+            border-radius: 30px;
+
+            font-size: 16px;
+
+            padding-left: 20px;
+
+            margin-top: 20px;
+
+            border-bottom: solid;
+            border-width: 1px;
+            border-color: #cea891;
+
+            color: #51545d;
+        }
+        .car_body{
+            padding-top: 10px;
+
+            padding-left: 25px;
+            padding-right: 25px;
+
+            padding-bottom: 20px;
+
+            background-color: #fff;
+
+            margin-top: 20px;
+
+            border-radius: 20px;
+        }
+        .card_head li{
+            display: inline-block;
+
+            margin-right: 30px;
+        }
+        .car_body label{
+            font-size: 13px;
+            margin-bottom: -10px;
+
+            color: #51545d;
+        }
+        @media (max-width: 800px) {
+            .card{
+                margin-top: -20px;
+            }
+            .bg{
+                height: 150vh;
+            }
+        }
+    </style>
+
     
 
 </head>
-<body>
+<body style="font-family: poppins;">
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm" style="">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
