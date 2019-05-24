@@ -29,10 +29,10 @@
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.5.6/css/buttons.dataTables.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
+    <!-- <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css"> -->
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"> -->
 
     <style type="text/css">
         .bg{
@@ -63,7 +63,7 @@
         .n_active{
             padding: 10px 10px 10px 10px;
 
-            width: 100px;
+            width: 150px;
 
             border-radius: 30px;
 
@@ -72,7 +72,7 @@
         .n_active:hover{
             padding: 10px 10px 10px 10px;
 
-            width: 100px;
+            width: 150px;
 
             border-radius: 30px;
 
@@ -88,7 +88,7 @@
             color: #3c2221;
             padding: 10px 10px 10px 10px;
 
-            width: 100px;
+            width: 150px;
 
             background-color: #fff;
             border-radius: 30px;
