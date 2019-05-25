@@ -165,18 +165,7 @@
 		        							<label id="eq_reven"></label>
 		        						</div>
 
-	<!--         							<div class="numb col-md-6">
-			        						<p id="brand"></p>
-			        						<p id="asin"></p>
-			        						<p id="address"></p>
-			        						<p id="contact"></p>
-			        						<p id="name"></p>
-			        						<p id="position"></p>
-			        						<p id="prod_link1">Product Link: <a href="" target="_blank" id="prod_link">Click Here</a></p>
-			        						<p id="web1">Website: <a href="" target="_blank" id="web"></a></p>
-			        						<p id="email1">Email: <a href="" target="_blank" id="email"></a></p>
-	        						
-	        							</div> -->
+
 		        						
 	        						</div>
 	        					</div>
@@ -245,7 +234,7 @@
 	        		        	              @elseif ( auth()->user()->wallet <= 0 )
 
 	        		        	                
-	        		        	                    <td><button type="button"  id="buy1" class="btn btn-warning" >Buy Credits</button></td>
+	        		        	                    <td><a href="{{ url('/load_account')}}" id="credits" class="btn btn-warning credits" >Buy Credits</a></td>
 
 	        		        	                @endif
 	        		        	                  

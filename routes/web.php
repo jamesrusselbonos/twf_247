@@ -14,6 +14,12 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/load_account', function () {
+    return view('load-account');
+});
+Route::get('/va_profile', function () {
+    return view('va-profile');
+});
 
 Auth::routes();
 
@@ -38,10 +44,11 @@ Route::get('/addproduct', 'AddproductController@index')->name('addproduct');
 Route::get('/product_details/{product}', 'ProductController@show');
 Route::get('/test/{id}', 'TestController@show');
 
-Route::post('/user/{user}', 'UserController@update');
+Route::post('/user/{id}', 'UserController@ajaxupdate');
 
-Route::get('/user/{user}', 'UserController@show')->name('user.edit');
+Route::get('/user/{id}/edit', 'UserController@edit')->name('user.edit');
 // Route::post('update', 'UserController@update');
+
 
 
 Auth::routes(['verify' => true]);

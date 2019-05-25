@@ -36,7 +36,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
     }
 
     /**
@@ -48,8 +48,7 @@ class UserController extends Controller
     public function show($id)
     {
 
-        return $id;
-        return view('update-profile');
+     
     }
 
     /**
@@ -60,7 +59,9 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        
+
+        return view('update-profile', ['user' => User::findOrFail($id)]);
     }
 
     /**
@@ -83,6 +84,44 @@ class UserController extends Controller
     }
        public function ajaxupdate(Request $request, $id)
     {
+
+        $user = User::findOrFail($id);
+
+        if($request->hasFile('image')){
+
+            $filenameWithExt = $request->file('image')->getClientOriginalName();
+
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            $variation = preg_replace('/[\+]/', '', $filename);
+
+            $extension = $request->file('image')->getClientOriginalExtension();
+
+            $fileNameToStore = 'images/'.''.$variation.'_'.time().'.'.$extension;
+            
+            $image = $request->file('image');
+
+            $destination = public_path('/images');
+             $image->move($destination, $fileNameToStore);
+
+             $user->image = $fileNameToStore;
+
+        }
+
+        if($request['email']){
+            $check_email = DB::table('users')->where('id', '!=', $id)->where('email', $request->email)->first();
+            if(!$check_email)
+            $user->email = $request['email'];
+            else
+                $status = 'ERROR';
+
+        }
+
+        if($request->name){
+
+            $user->name = $request['name'];
+        }
+
+        $user->save();
       
     }
 
@@ -96,5 +135,9 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function vaProfile(){
+        return view('load-account');
     }
 }

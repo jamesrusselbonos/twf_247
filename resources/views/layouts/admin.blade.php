@@ -87,7 +87,7 @@
     <ul class="navbar-nav ml-auto">
      
 
-     <li style="padding:10px;"><i class="fas fa-dollar-sign"></i> Credits Owned: {{ Auth::user()->wallet }} <a href="#" style="color:rgba(0,0,0,.5); text-decoration: none;">
+     <li style="padding:10px;"><i class="fas fa-dollar-sign"></i> Credits Owned: {{ Auth::user()->wallet }} <a href="{{ url('/load_account') }}" style="color:rgba(0,0,0,.5); text-decoration: none;">
           <i class="far fa-plus-square"></i>
      </a></li>     
  
@@ -127,7 +127,7 @@
 <!-- {{ route('user.edit', Auth::user()->id) }} -->
           @else
           <a href="#" class="d-block">{{ ucwords(Auth::user()->name) }}</a>
-          <small><a href="" style="color:#a6a6a6"><i class="fas fa-pencil-alt" style="color:#a6a6a6"></i> Edit Profile</a></small>
+          <small><a href="{{ route('user.edit', Auth::user()->id) }}" style="color:#a6a6a6"><i class="fas fa-pencil-alt" style="color:#a6a6a6"></i> Edit Profile</a></small>
           @endguest
          
         </div>
@@ -198,7 +198,7 @@
             
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link 
+            <a href="{{ url('/va_profile') }}" id="va-prof" class="nav-link 
               @if($segment=='categories')
               active
               @endif">
@@ -220,7 +220,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link 
+            <a href="{{ url('/load_account') }}" class="nav-link 
               @if($segment=='news')
               active
               @endif">
@@ -236,7 +236,7 @@
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                                      <i class="fas fa-sign-out-alt"></i>
-                                        {{ __('Logout') }}
+                                       <p> {{ __('Logout') }}</p>
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -255,7 +255,7 @@
   </aside>
 
   <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
+  <div class="content-wrapper" >
     @yield('content')
   </div>
   <!-- /.content-wrapper -->
@@ -277,6 +277,7 @@
 
 
 <!-- jQuery -->
+<script src="{{ asset('/js/user.js')}}"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.5.6/js/dataTables.buttons.min.js"></script>
@@ -422,7 +423,6 @@ $(document).ready(function() {
         
     } );
 
-    
 
 
     $("#checkout").click(function(){
@@ -475,7 +475,6 @@ $(document).ready(function() {
       function(data){
 
       
- console.log(pid);
 
        }); 
 
