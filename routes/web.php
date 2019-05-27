@@ -20,6 +20,9 @@ Route::get('/load_account', function () {
 Route::get('/va_profile', function () {
     return view('va-profile');
 });
+Route::get('/update_profile', function () {
+    return view('update-profile');
+});
 
 Auth::routes();
 
@@ -44,7 +47,7 @@ Route::get('/addproduct', 'AddproductController@index')->name('addproduct');
 Route::get('/product_details/{product}', 'ProductController@show');
 Route::get('/test/{id}', 'TestController@show');
 
-Route::post('/user/{id}', 'UserController@ajaxupdate');
+Route::post('/user/{id}', 'UserController@ajaxupdate')->name('user.prof');
 
 Route::get('/user/{id}/edit', 'UserController@edit')->name('user.edit');
 // Route::post('update', 'UserController@update');

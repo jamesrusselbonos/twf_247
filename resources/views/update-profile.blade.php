@@ -4,8 +4,8 @@
 
 <div class="container">
     <div class="row my-2">
-        <div class="col-lg-8 order-lg-2">
-  
+        <div class="col-lg-8 order-lg-2" id="user-token">
+  <input id="hdn-token" type="hidden" name="_token" value="{{ csrf_token() }}">
             <div class="tab-content py-4">
                 <div class="tab-pane active" id="profile">
                     <h5 class="mb-3">User Profile <span class="edit-user hidden" id="edit-user"><a href="#" ><i class="fa fa-pencil">&nbsp;</i>Edit</a></span></h5>
@@ -17,7 +17,7 @@
                                     <input id="hdn-token" type="hidden" name="_token" value="{{ csrf_token() }}">
                                     <p class="text-muted name-info" >
                                         
-                                         <label id="name-n">{{ ucwords($user->name)}}</label>
+                                         <label id="name-n">{{ ucwords(Auth::user()->name)}}</label>
                                       
                                       
                                             
@@ -25,13 +25,13 @@
                                 </div>
                             </br>
     
-                                <div class="edit-mode hide" >
+                                <div class="edit-mode hide" id="name1-token">
                                     <div class="row">
                                     <div class="col-xs-10">
-                                        
+                                        <input id="hdn-token" type="hidden" name="_token" value="{{ csrf_token() }}">
                                         <div class="form-group" id="phone-i">
 
-                                            <input class="form-control" placeholder="Name" value="" id="name1" data-id="" name="phone1">
+                                            <input class="form-control" placeholder="Name" value="" id="name1" data-id="" name="name1">
                                         </div>
               
                                       
@@ -47,7 +47,7 @@
                                     <input id="hdn-token" type="hidden" name="_token" value="{{ csrf_token() }}">
                                     <p class="text-muted email-info" >
                                         
-                                         <label id="email-e">{{ ucwords($user->email)}}</label>
+                                         <label id="email-e">{{ ucwords(Auth::user()->email)}}</label>
                                       
                                       
                                             
@@ -58,16 +58,17 @@
                                 <div class="edit-mode hide" >
                                     <div class="row">
                                     <div class="col-xs-10">
+                                        <input id="hdn-token" type="hidden" name="_token" value="{{ csrf_token() }}">
                                         <div class="col-xs-5">
                                         
                                         <div class="form-group" id="email-i">
-
+                                            <input id="hdn-token" type="hidden" name="_token" value="{{ csrf_token() }}">
                                             <input class="form-control" placeholder="Email" value="" id="email1" data-id="" name="email1">
                                         </div>
               
                                       
                                         </div>
-                                          <button id=" {{ $user->id }}" class="btn btn-sm btn-success detail-save-user"><i class="fa fa-save"></i></button>
+                                          <button id=" {{ Auth::user()->id }}" class="btn btn-sm btn-success detail-save-user"><i class="fa fa-save"></i></button>
                                           <button class="btn btn-sm btn-danger detail-cancel-user"><i class="fa fa-times"></i></button>
                                      </div> 
                                  </div> 
@@ -114,13 +115,29 @@
 
             </div>
         </div>
+
+
         <div class="col-lg-4 order-lg-1 text-center">
-            <img src="//placehold.it/150" class="mx-auto img-fluid img-circle d-block" alt="avatar">
-            <h6 class="mt-2">Upload a different photo</h6>
+            <form method="POST" id="add_product" action="{{ route('user.prof' ,Auth::user()->id) }}" enctype="multipart/form-data">
+            <img src="{{asset(Auth::user()->image) }}" id='img-upload' class="mx-auto img-fluid img-circle d-block" alt="avatar"/>
+            @csrf
+           <div class="input-group">
+            <span class="input-group-btn" >
+                <span class="btn btn-default btn-file" style:>
+                   <button class="btn btn-outline-secondary"  type="button"> Browse… </button>  <input type="file"  name="user_image" id="imgInp">
+
+                </span>
+                 <button type="submit" class="btn btn-outline-secondary upload_user" data-id="{{ Auth::user()->id }}" id="upload_user"  type="button"> Upload </button>
+            </span>
+            <input type="text" style="cursor:not-allowed;"  class="form-control hide" readonly>
+            </div>
+            <!-- <h6 class="mt-2">Upload a different photo</h6>
             <label class="custom-file">
                 <input type="file" id="file" class="custom-file-input">
-                <span class="custom-file-control">Choose file</span>
-            </label>
+
+                <span class="custom-file-control file-btn">Choose file</span>
+            </label> -->
+        </form>
         </div>
     </div>
 </div>

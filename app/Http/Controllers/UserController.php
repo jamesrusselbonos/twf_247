@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Product;
+use DB;
 
 class UserController extends Controller
 {
@@ -73,7 +74,7 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-       
+    
         $user = User::findOrFail($request->id);
         $user->id = $request['id']; 
         $user->wallet = $request['wallet']; 
@@ -87,24 +88,25 @@ class UserController extends Controller
 
         $user = User::findOrFail($id);
 
-        if($request->hasFile('image')){
+        if($request->hasFile('user_image')){
 
-            $filenameWithExt = $request->file('image')->getClientOriginalName();
+            $filenameWithExt = $request->file('user_image')->getClientOriginalName();
 
             $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
             $variation = preg_replace('/[\+]/', '', $filename);
 
-            $extension = $request->file('image')->getClientOriginalExtension();
+            $extension = $request->file('user_image')->getClientOriginalExtension();
 
             $fileNameToStore = 'images/'.''.$variation.'_'.time().'.'.$extension;
             
-            $image = $request->file('image');
+            $image = $request->file('user_image');
 
             $destination = public_path('/images');
              $image->move($destination, $fileNameToStore);
 
              $user->image = $fileNameToStore;
-
+             $user->save();
+             return view('update-profile');
         }
 
         if($request['email']){

@@ -13,9 +13,13 @@ $(document).ready(function() {
 
 	}
 
+	setTimeout(function(){
+	     load();
+	},500);
+
 	
 	  
-	  load();
+	 
 });
 </script>
 @endsection

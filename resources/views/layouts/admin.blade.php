@@ -164,7 +164,7 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="{{ asset('dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">
+          <img src=" @if(Auth::user()->image) {{ asset(Auth::user()->image) }} @else {{ asset('dist/img/user2-160x160.jpg') }} @endif" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
           @guest
@@ -242,7 +242,7 @@
             
           </li>
           <li class="nav-item">
-            <a href="#" id="va-prof" class="va-prof nav-link 
+            <a href="javascript:void(0)" id="va-prof" class="va-prof nav-link 
               @if($segment=='categories')
               active
               @endif">
@@ -336,8 +336,10 @@ $(document).ready(function() {
       $('#content').hide();
        $('#extended_cont').show();
     $('.va-prof').click(function(){
+      var myNewURL = "va-profile";
       $('#content').show();
       $('#extended_cont').hide();
+      window.history.replaceState({}, document.title, "/" + myNewURL );
     });
 
     $('#example').DataTable( {
@@ -481,12 +483,13 @@ $(".detail-save-user").click(function(){
 
 $(".upload_user").click(function(){
     var id = $(this).data('id');
+    var image ;
 
    var token = $(this).parent().find('#hdn-token').val();
 
 
   $.post('user/' + id,
-  {'id':id, 'name':name,'email':email,'_token':token}, 
+  {'id':id,'image':image,'_token':token}, 
   function(data){
 
   document.getElementById('name-n').innerHTML = name;
