@@ -41,6 +41,50 @@
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
+      <!-- jQuery -->
+      <script src="{{ asset('/js/user.js')}}"></script>
+      <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+      <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+      <script src="https://cdn.datatables.net/buttons/1.5.6/js/dataTables.buttons.min.js"></script>
+      <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.flash.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+      <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.html5.min.js"></script>
+      <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.print.min.js"></script>
+
+      <!-- jQuery UI 1.11.4 -->
+      <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+      <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+      <script>
+        $.widget.bridge('uibutton', $.ui.button)
+      </script>
+      <!-- Bootstrap 4 -->
+      <script src="{{ asset('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+      <!-- Morris.js charts -->
+
+      <!-- Sparkline -->
+      <script src="{{ asset('plugins/sparkline/jquery.sparkline.min.js') }}"></script>
+      <!-- jvectormap -->
+      <!-- jQuery Knob Chart -->
+      <!-- daterangepicker -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>
+      <script src="{{ asset('plugins/daterangepicker/daterangepicker.js') }}"></script>
+      <!-- datepicker -->
+      <script src="{{ asset('plugins/datepicker/bootstrap-datepicker.js') }}"></script>
+      <!-- Bootstrap WYSIHTML5 -->
+      <script src="{{ asset('plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js') }}"></script>
+      <!-- Slimscroll -->
+      <script src="{{ asset('plugins/slimScroll/jquery.slimscroll.min.js') }}"></script>
+      <!-- FastClick -->
+      <script src="{{ asset('plugins/fastclick/fastclick.js') }}"></script>
+      <!-- AdminLTE App -->
+      <script src="{{ asset('dist/js/adminlte.js') }}"></script>
+      <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+      <script src="{{ asset('dist/js/pages/dashboard.js') }}"></script>
+      <!-- AdminLTE for demo purposes -->
+      <script src="{{ asset('dist/js/demo.js') }}"></script>
+
       <script type = "text/javascript" >
          function preventBack(){window.history.forward();}
           setTimeout("preventBack()", 0);
@@ -126,8 +170,8 @@
           @guest
 <!-- {{ route('user.edit', Auth::user()->id) }} -->
           @else
-          <a href="#" class="d-block">{{ ucwords(Auth::user()->name) }}</a>
-          <small><a href="{{ route('user.edit', Auth::user()->id) }}" style="color:#a6a6a6"><i class="fas fa-pencil-alt" style="color:#a6a6a6"></i> Edit Profile</a></small>
+          <a href="#" class="d-block" id="auth_username">{{ ucwords(Auth::user()->name) }}</a>
+          <small><a href="{{ url('update_profile') }}" style="color:#a6a6a6"><i class="fas fa-pencil-alt" style="color:#a6a6a6"></i> Edit Profile</a></small>
           @endguest
          
         </div>
@@ -198,7 +242,7 @@
             
           </li>
           <li class="nav-item">
-            <a href="{{ url('/va_profile') }}" id="va-prof" class="nav-link 
+            <a href="#" id="va-prof" class="va-prof nav-link 
               @if($segment=='categories')
               active
               @endif">
@@ -256,7 +300,12 @@
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper" >
+    <div id="content">
+    <iframe name="Framename" src="https://www.247virtualagent.com/virtual-assistants/" width="550" height="550" frameborder="0" scrolling="yes" style="width: 100%;"> </iframe> 
+    </div>
+    <div id="extended_cont">
     @yield('content')
+    </div>
   </div>
   <!-- /.content-wrapper -->
   <footer class="main-footer">
@@ -276,55 +325,20 @@
 <!-- ./wrapper -->
 
 
-<!-- jQuery -->
-<script src="{{ asset('/js/user.js')}}"></script>
-<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.5.6/js/dataTables.buttons.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.flash.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.html5.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.print.min.js"></script>
 
-<!-- jQuery UI 1.11.4 -->
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
-<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-<script>
-  $.widget.bridge('uibutton', $.ui.button)
-</script>
-<!-- Bootstrap 4 -->
-<script src="{{ asset('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-<!-- Morris.js charts -->
-
-<!-- Sparkline -->
-<script src="{{ asset('plugins/sparkline/jquery.sparkline.min.js') }}"></script>
-<!-- jvectormap -->
-<!-- jQuery Knob Chart -->
-<!-- daterangepicker -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>
-<script src="{{ asset('plugins/daterangepicker/daterangepicker.js') }}"></script>
-<!-- datepicker -->
-<script src="{{ asset('plugins/datepicker/bootstrap-datepicker.js') }}"></script>
-<!-- Bootstrap WYSIHTML5 -->
-<script src="{{ asset('plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js') }}"></script>
-<!-- Slimscroll -->
-<script src="{{ asset('plugins/slimScroll/jquery.slimscroll.min.js') }}"></script>
-<!-- FastClick -->
-<script src="{{ asset('plugins/fastclick/fastclick.js') }}"></script>
-<!-- AdminLTE App -->
-<script src="{{ asset('dist/js/adminlte.js') }}"></script>
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="{{ asset('dist/js/pages/dashboard.js') }}"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="{{ asset('dist/js/demo.js') }}"></script>
 </body>
 </html>
 
 <script type="text/javascript">
 $(document).ready(function() {
 
+
+      $('#content').hide();
+       $('#extended_cont').show();
+    $('.va-prof').click(function(){
+      $('#content').show();
+      $('#extended_cont').hide();
+    });
 
     $('#example').DataTable( {
         
@@ -423,7 +437,68 @@ $(document).ready(function() {
         
     } );
 
+$(".edit-user").click(function(){
+  var n = document.getElementById('name-n').innerHTML;
+  var e = document.getElementById('email-e').innerHTML;
+  $('#email1').val(e);
+  $('#name1').val(n);
+  $('.view-mode').hide();
+  $('.edit-mode').removeClass('hide');
 
+
+});
+
+$(".detail-cancel-user").click(function(){
+  
+  $('.view-mode').show();
+  $('.edit-mode').addClass('hide');
+
+});
+
+
+$(".detail-save-user").click(function(){
+    var id = $(this).attr('id');
+  var name = $('#name1').val();
+  var email = $('#email1').val();
+   var token = $(this).parent().find('#hdn-token').val();
+  $('.view-mode').show();
+  $('.edit-mode').addClass('hide');
+
+  $.post('user/' + id,
+  {'id':id, 'name':name,'email':email,'_token':token}, 
+  function(data){
+
+  document.getElementById('name-n').innerHTML = name;
+  document.getElementById('email-e').innerHTML = email;
+  document.getElementById('auth_username').innerHTML = name;
+
+
+   }); 
+      
+      
+
+});
+
+$(".upload_user").click(function(){
+    var id = $(this).data('id');
+
+   var token = $(this).parent().find('#hdn-token').val();
+
+
+  $.post('user/' + id,
+  {'id':id, 'name':name,'email':email,'_token':token}, 
+  function(data){
+
+  document.getElementById('name-n').innerHTML = name;
+  document.getElementById('email-e').innerHTML = email;
+  document.getElementById('auth_username').innerHTML = name;
+
+
+   }); 
+      
+      
+
+});
 
     $("#checkout").click(function(){
       var id = $(this).data('2');
@@ -492,6 +567,40 @@ $(document).ready(function() {
 
     });  
 
+    /////////Image//////////
+    $(document).on('change', '.btn-file :file', function() {
+    var input = $(this),
+        label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+    input.trigger('fileselect', [label]);
+    });
+
+    $('.btn-file :file').on('fileselect', function(event, label) {
+        
+        var input = $(this).parents('.input-group').find(':text'),
+            log = label;
+        
+        if( input.length ) {
+            input.val(log);
+        } else {
+            // if( log ) alert(log);
+        }
+    
+    });
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            
+            reader.onload = function (e) {
+                $('#img-upload').attr('src', e.target.result);
+            }
+            
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    $("#imgInp").change(function(){
+        readURL(this);
+    });     
    
 
   function formatNumber(num) {
