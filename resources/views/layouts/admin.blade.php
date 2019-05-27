@@ -301,7 +301,7 @@
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper" >
     <div id="content">
-    <iframe name="Framename" src="https://www.247virtualagent.com/virtual-assistants/" width="550" height="550" frameborder="0" scrolling="yes" style="width: 100%;"> </iframe> 
+    <iframe name="Framename" src="https://www.247virtualagent.com/virtual-assistants/" width="100%" height="2000px" frameborder="0" scrolling="yes" style="width: 100%;"> </iframe> 
     </div>
     <div id="extended_cont">
     @yield('content')
