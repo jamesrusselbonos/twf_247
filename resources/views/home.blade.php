@@ -24,7 +24,7 @@
             <!-- small box -->
             <div class="small-box bg-info">
               <div class="inner">
-                <h3>{{ count($products)}}</h3>
+                <h3>{{$products->where("deleted", 0)->count()}}</h3>
 
                 <p>Products</p>
               </div>

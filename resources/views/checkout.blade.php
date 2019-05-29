@@ -14,62 +14,12 @@
   	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
   	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  	<link rel="stylesheet" href="{{ asset('css/checkout.css') }}">
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
   	
-  	<style type="text/css">
-  		
-  		#example1 {
-  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-}
 
-#example1 td, #example1 th {
-  border: 1px solid #ddd;
-  padding: 8px;
-}
-
-#example1tr:nth-child(even){background-color: #f2f2f2;}
-
-#example1 tr:hover {background-color: #ddd;}
-
-#example1 th {
-  padding-top: 12px;
-  padding-bottom: 12px;
-  text-align: left;
-  background-color: #4CAF50;
-  color: white;
-}
-
-
-  		#example1 {
-
-  			margin:25px:
-
-  		}
-  		
-
-  		#example1 td{
-  			max-width: 100px;
-  			text-align: center;
-  			overflow: hidden;
-  			text-overflow: ellipsis;
-  			   white-space: nowrap;
-
-  		}
-  		.buts {
-  			margin-left: 450px;
-
-  		}
-  		.buts .close-cart, .add-cart{
-  			cursor: pointer;
-  		}
-
-  		
-
-  	</style>
   </head>
 
 
@@ -152,7 +102,7 @@
 	    </table>
 </div>
 	</body>
-
+	<script src="{{ asset('js/checkout.js') }}"></script>
 	<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 	<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 	<script src="https://cdn.datatables.net/buttons/1.5.6/js/dataTables.buttons.min.js"></script>
@@ -165,48 +115,3 @@
 
 </html>
 
-<script type="text/javascript">
-	$(document).ready(function() {
-
-	$('#example1').DataTable( {
-	    
-	   "fixedHeader": {
-	      header: true,
-	      footer: true,
-
-	  },
-	  "columnDefs": [ {
-	  "targets": [ 0, 7 ],
-	  "orderable": false
-	  } ],
-	    
-	    dom: 'Bfrtip',
-	    // "pageLength": 50,
-	    "bPaginate": false,
-	    responsive: true,
-
-	    buttons: [
-
-	    {
-	                   extend:    'copyHtml5',
-	                   text:      '<i class="fa fa-files-o"></i>',
-	                   titleAttr: 'Copy'
-	               },
-	               {
-	                   extend:    'excelHtml5',
-	                   text:      '<i class="fa fa-file-excel-o"></i>',
-	                   titleAttr: 'Excel',
-	                   title: 'TestFileName1'
-	               },	               
-	               {
-	                   extend:    'csvHtml5',
-	                   text:      '<i class="fas fa-file-csv"></i>',
-	                   titleAttr: 'CSV',
-	                   title: 'TestFileName3'
-	               }
-
-	               ]
-	    
-	} );
-} );
-</script>

@@ -1,39 +1,13 @@
 
 @extends('layouts.app')
-  <style type="text/css">
-    .btn-file {
-      position: relative;
-      overflow: hidden;
-  }
-  .btn-file input[type=file] {
-      position: absolute;
-      top: 0;
-      right: 0;
-      min-width: 100%;
-      min-height: 100%;
-      font-size: 100px;
-      text-align: right;
-      filter: alpha(opacity=0);
-      opacity: 0;
-      outline: none;
-      background: white;
-      cursor: inherit;
-      display: block;
-  }
-
-  #img-upload{
-      width: 100%;
-}
-</style>
+<link rel="stylesheet" href="{{ asset('dist/css/adminlte.min.css') }}">
 @section('content')
   <div class="container">
     <div style="margin-top: 30px;" class="row">
       <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
         <h1 style="text-align: right; font-size: 40px; margin-top: 20px;">Add a product</h1>
       </div>
-      <div style="background-color: #fff; padding:20px 20px 20px 20px; -webkit-box-shadow: 0px 13px 11px -1px rgba(0,0,0,0.43);
-        -moz-box-shadow: 0px 13px 11px -1px rgba(0,0,0,0.43);
-        box-shadow: 0px 13px 11px -1px rgba(0,0,0,0.43);" class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
+      <div  class="col-lg-10 col-md-10 col-sm-12 col-xs-12 addprod">
           
         <form method="POST" id="add_product" action="{{ route('addproduct.store') }}" enctype="multipart/form-data">
           <input id="hdn-token" type="hidden" name="_token" value="{{ csrf_token() }}">

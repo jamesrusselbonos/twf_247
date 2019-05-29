@@ -8,20 +8,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="{{ asset('plugins/font-awesome/css/font-awesome.min.css') }}">
-  <!-- Ionicons -->
-  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ asset('dist/css/adminlte.min.css') }}">
-  <!-- iCheck -->
-  <link rel="stylesheet" href="{{ asset('plugins/iCheck/flat/blue.css') }}">
-  <!-- Morris chart -->
-  <!-- jvectormap -->
-  <!-- Date Picker -->
-  <link rel="stylesheet" href="{{ asset('plugins/datepicker/datepicker3.css') }}">
-  <!-- Daterange picker -->
-  <link rel="stylesheet" href="{{ asset('plugins/daterangepicker/daterangepicker-bs3.css') }}">
-  <!-- bootstrap wysihtml5 - text editor -->
-  <link rel="stylesheet" href="{{ asset('plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css') }}">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
   
@@ -36,13 +25,13 @@
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/fixedheader/3.1.2/css/fixedHeader.dataTables.min.css">
 
-   <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"> -->
+ 
    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
       <!-- jQuery -->
-      <script src="{{ asset('/js/user.js')}}"></script>
+     
       <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
       <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
       <script src="https://cdn.datatables.net/buttons/1.5.6/js/dataTables.buttons.min.js"></script>
@@ -61,29 +50,8 @@
       </script>
       <!-- Bootstrap 4 -->
       <script src="{{ asset('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-      <!-- Morris.js charts -->
 
-      <!-- Sparkline -->
-      <script src="{{ asset('plugins/sparkline/jquery.sparkline.min.js') }}"></script>
-      <!-- jvectormap -->
-      <!-- jQuery Knob Chart -->
-      <!-- daterangepicker -->
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>
-      <script src="{{ asset('plugins/daterangepicker/daterangepicker.js') }}"></script>
-      <!-- datepicker -->
-      <script src="{{ asset('plugins/datepicker/bootstrap-datepicker.js') }}"></script>
-      <!-- Bootstrap WYSIHTML5 -->
-      <script src="{{ asset('plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js') }}"></script>
-      <!-- Slimscroll -->
-      <script src="{{ asset('plugins/slimScroll/jquery.slimscroll.min.js') }}"></script>
-      <!-- FastClick -->
-      <script src="{{ asset('plugins/fastclick/fastclick.js') }}"></script>
-      <!-- AdminLTE App -->
-      <script src="{{ asset('dist/js/adminlte.js') }}"></script>
-      <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-      <script src="{{ asset('dist/js/pages/dashboard.js') }}"></script>
-      <!-- AdminLTE for demo purposes -->
-      <script src="{{ asset('dist/js/demo.js') }}"></script>
+   
 
       <script type = "text/javascript" >
          function preventBack(){window.history.forward();}
@@ -115,17 +83,6 @@
       </li>
     </ul>
 
-    <!-- SEARCH FORM -->
-    <!-- <form class="form-inline ml-3">
-      <div class="input-group input-group-sm">
-        <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
-        <div class="input-group-append">
-          <button class="btn btn-navbar" type="submit">
-            <i class="fa fa-search"></i>
-          </button>
-        </div>
-      </div>
-    </form> -->
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
@@ -168,7 +125,7 @@
         </div>
         <div class="info">
           @guest
-<!-- {{ route('user.edit', Auth::user()->id) }} -->
+
           @else
           <a href="#" class="d-block" id="auth_username">{{ ucwords(Auth::user()->name) }}</a>
           <small><a href="{{ url('update_profile') }}" style="color:#a6a6a6"><i class="fas fa-pencil-alt" style="color:#a6a6a6"></i> Edit Profile</a></small>
@@ -324,345 +281,12 @@
 </div>
 <!-- ./wrapper -->
 
-
+  <script src="{{ asset('js/va_load.js') }}"></script>
+ <script src="{{ asset('js/product.js') }}"></script>
+ <script src="{{ asset('js/product_list.js') }}"></script>
+ <script src="{{ asset('js/user.js') }}"></script>
 
 </body>
+
 </html>
 
-<script type="text/javascript">
-$(document).ready(function() {
-
-
-      $('#content').hide();
-       $('#extended_cont').show();
-    $('.va-prof').click(function(){
-      var myNewURL = "va-profile";
-      $('#content').show();
-      $('#extended_cont').hide();
-      window.history.replaceState({}, document.title, "/" + myNewURL );
-    });
-
-    $('#example').DataTable( {
-        
-       "fixedHeader": {
-          header: true,
-          footer: true,
-
-      },
-      "columnDefs": [ {
-      "targets": [ 0, 7 ],
-      "orderable": false
-      } ],
-        scrollY:  '1000px',
-        scrollX:  false,
-        dom: 'Bfrtip',
-        // "pageLength": 50,
-        "bPaginate": false,
-        responsive: true,
-
-        buttons: [
-
-        {
-                       extend:    'copyHtml5',
-                       text:      '<i class="fa fa-files-o"></i>',
-                       titleAttr: 'Copy',
-                   },
-                   {
-                       extend:    'excelHtml5',
-                       text:      '<i class="fa fa-file-excel-o"></i>',
-                       titleAttr: 'Excel',
-                       title: 'TestFileName1'
-                   },
-                   {
-                       extend:    'pdfHtml5',
-                       text:      '<i class="fa fa-file-pdf-o"></i>',
-                       titleAttr: 'PDF',
-                       title: 'TestFileName2'
-                   },
-                   {
-                       extend:    'print',
-                       text:      '<i class="fa fa-print"></i>',
-                       titleAttr: 'Print',
-                       title: 'TestFileName3'
-
-                   }
-
-                   ]
-        
-    } );
-
-    $('#example1').DataTable( {
-        
-       "fixedHeader": {
-          header: true,
-          footer: true,
-
-      },
-      "columnDefs": [ {
-      "targets": [ 0 ],
-      "orderable": false
-      } ],
-        scrollY:  '1000px',
-        scrollX:  false,
-        dom: 'Bfrtip',
-        // "pageLength": 50,
-        "bPaginate": false,
-
-        buttons: [
-
-        {
-                       extend:    'copyHtml5',
-                       text:      '<i class="fa fa-files-o"></i>',
-                       titleAttr: 'Copy'
-                   },
-                   {
-                       extend:    'excelHtml5',
-                       text:      '<i class="fa fa-file-excel-o"></i>',
-                       titleAttr: 'Excel',
-                       title: 'TestFileName1'
-                   },
-                   {
-                       extend:    'pdfHtml5',
-                       text:      '<i class="fa fa-file-pdf-o"></i>',
-                       titleAttr: 'PDF',
-                       title: 'TestFileName2'
-                   },
-                   {
-                       extend:    'print',
-                       text:      '<i class="fa fa-print"></i>',
-                       titleAttr: 'Print',
-                       title: 'TestFileName3'
-
-                   }
-
-                   ]
-        
-    } );
-
-$(".edit-user").click(function(){
-  var n = document.getElementById('name-n').innerHTML;
-  var e = document.getElementById('email-e').innerHTML;
-  $('#email1').val(e);
-  $('#name1').val(n);
-  $('.view-mode').hide();
-  $('.edit-mode').removeClass('hide');
-
-
-});
-
-$(".detail-cancel-user").click(function(){
-  
-  $('.view-mode').show();
-  $('.edit-mode').addClass('hide');
-
-});
-
-
-$(".detail-save-user").click(function(){
-    var id = $(this).attr('id');
-  var name = $('#name1').val();
-  var email = $('#email1').val();
-   var token = $(this).parent().find('#hdn-token').val();
-  $('.view-mode').show();
-  $('.edit-mode').addClass('hide');
-
-  $.post('user/' + id,
-  {'id':id, 'name':name,'email':email,'_token':token}, 
-  function(data){
-
-  document.getElementById('name-n').innerHTML = name;
-  document.getElementById('email-e').innerHTML = email;
-  document.getElementById('auth_username').innerHTML = name;
-
-
-   }); 
-      
-      
-
-});
-
-$(".upload_user").click(function(){
-    var id = $(this).data('id');
-    var image ;
-
-   var token = $(this).parent().find('#hdn-token').val();
-
-
-  $.post('user/' + id,
-  {'id':id,'image':image,'_token':token}, 
-  function(data){
-
-  document.getElementById('name-n').innerHTML = name;
-  document.getElementById('email-e').innerHTML = email;
-  document.getElementById('auth_username').innerHTML = name;
-
-
-   }); 
-      
-      
-
-});
-
-    $("#checkout").click(function(){
-      var id = $(this).data('2');
-      var oldWallet = $(this).data('1');
-      var totalQty = $(this).data('3');
-      var token = $("#tablee .hdn-token").val();
-
-      var wallet = oldWallet - totalQty;
-
-         $.post('user/' + id,
-         {'id':id, 'wallet':wallet,'_token':token}, 
-         function(data){
-
-        
-
-
-          }); 
-
-
-    });   
-
-
-    $(".add-cart").click(function(){
-      var wallet = $("#exampleModalCenter .hdn-wallet").val();
-      var pid = $("#exampleModalCenter .hdn-pid").val();
-      var id = $("#exampleModalCenter .hdn-id").val();
-      var token = $("#exampleModalCenter .hdn-token").val();
-      
-
-      $.post('update-product/' + pid,
-      {'pid':pid,'_token':token}, 
-      function(data){
-
-      
-
-
-       }); 
-
-     
-    });  
-     $(".yes").click(function(){
-
-      var pid = $("#modal_confirmation .hdn-pid").val();
-      var token = $("#modal_confirmation .hdn-token").val();
-      console.log(token);
-
-      $.post('re-update/' + pid,
-      {'pid':pid,'_token':token}, 
-      function(data){
-
-      
-
-       }); 
-
-     }); 
-
-
-    $(".remove-cart").click(function(){
-
-      var id = $(this).attr('pid');
-
-      $("#modal_confirmation .hdn-pid").val( id );
-      $("#yes").attr("href", 'remove-to-cart/' + id );
-
-
-
-    });  
-
-    /////////Image//////////
-    $(document).on('change', '.btn-file :file', function() {
-    var input = $(this),
-        label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
-    input.trigger('fileselect', [label]);
-    });
-
-    $('.btn-file :file').on('fileselect', function(event, label) {
-        
-        var input = $(this).parents('.input-group').find(':text'),
-            log = label;
-        
-        if( input.length ) {
-            input.val(log);
-        } else {
-            // if( log ) alert(log);
-        }
-    
-    });
-    function readURL(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-            
-            reader.onload = function (e) {
-                $('#img-upload').attr('src', e.target.result);
-            }
-            
-            reader.readAsDataURL(input.files[0]);
-        }
-    }
-
-    $("#imgInp").change(function(){
-        readURL(this);
-    });     
-   
-
-  function formatNumber(num) {
-    return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
-  }
-
-    $(".buy").click(function(){
-      // $("[data-toggle='popover']").popover('toggle');
-      var wallet = $(this).data('1');
-      var id = $(this).attr("id1"); 
-    
-      var pid = $(this).attr("pid");
-      var image = $(this).attr("image");      
-      var brand = $(this).attr("brand");
-      var asin = $(this).attr("asin");      
-      var price = $(this).attr("price");      
-      var unit_sold_mo = $(this).attr("unit_sold_mo");
-      var reven_mo = $(this).attr("reven_mo");      
-      var sellers = $(this).attr("sellers");
-      var eq_units = $(this).attr("eq_units");      
-      var eq_reven = $(this).attr("eq_reven");
-      // var website = $(this).attr("website");      
-      // var fname = $(this).attr("fname");
-      // var lname = $(this).attr("lname");
-      // var address = $(this).attr("address");      
-      // var contact_no = $(this).attr("contact_no");
-      // var position = $(this).attr("position");
-      // var email = $(this).attr("email");
-      // var fullname =  fname + " " + lname;
-      // var prod_link = $(this).attr("prod_link");
-      var token = $("#exampleModalCenter .hdn-token").val();
-
-      $("#exampleModalCenter .hdn-pid").val( pid );
-      $("#exampleModalCenter .hdn-wallet").val( wallet );
-      $(".numb h5").html("Prime Price: $" + formatNumber(price));
-      document.getElementById('units_mo').innerHTML ="Units Sold/Mo: " + formatNumber(unit_sold_mo);
-      document.getElementById('reven_mo').innerHTML ="Revenue/Mo: $" + formatNumber(reven_mo);
-      document.getElementById('sellers').innerHTML ="Competitive Sellers: " + sellers;
-      document.getElementById('eq_units').innerHTML ="Equity Units/Mo: " + formatNumber(eq_units);
-      document.getElementById('eq_reven').innerHTML ="Equity Revenue/Mo: $" + formatNumber(eq_reven);
-      // $("#prod_link").attr("href", prod_link);
-      // $("#web").attr("href", website);
-      // $("#email").attr("href", email);
-      // $("#web").text(website);
-      // $("#email").text(email);
-     
-      // document.getElementById("brand").innerHTML = "Brand: " + brand;
-      // document.getElementById("asin").innerHTML = "ASIN: " + asin;
-      // document.getElementById("name").innerHTML = "Name: " + fullname;      
-      // document.getElementById("position").innerHTML = "Position: " + position;
-      // document.getElementById("address").innerHTML = "Address: " + address;
-      // document.getElementById("contact").innerHTML = "Contact No: " + contact_no;
-
-      $("#pic").attr("src", image);
-      $("#add-cart").attr("href", "/add-to-cart/" + pid );
-
-    });
-    
-
-
-} );
-</script>

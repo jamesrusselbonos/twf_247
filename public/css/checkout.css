@@ -1,0 +1,48 @@
+  		#example1 {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#example1 td, #example1 th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#example1tr:nth-child(even){background-color: #f2f2f2;}
+
+#example1 tr:hover {background-color: #ddd;}
+
+#example1 th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+
+
+  		#example1 {
+
+  			margin:25px:
+
+  		}
+  		
+
+  		#example1 td{
+  			max-width: 100px;
+  			text-align: center;
+  			overflow: hidden;
+  			text-overflow: ellipsis;
+  			   white-space: nowrap;
+
+  		}
+  		.buts {
+  			margin-left: 450px;
+
+  		}
+  		.buts .close-cart, .add-cart{
+  			cursor: pointer;
+  		}
+
+  		

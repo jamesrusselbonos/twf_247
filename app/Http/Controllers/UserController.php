@@ -122,6 +122,11 @@ class UserController extends Controller
 
             $user->name = $request['name'];
         }
+        if($request->wallet){
+
+            $user->wallet = $request['wallet']; 
+        }
+
 
         $user->save();
       
