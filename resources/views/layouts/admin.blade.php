@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,9 +16,6 @@
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
   
 
-
-
-  
 
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.5.6/css/buttons.dataTables.min.css">
@@ -65,6 +63,10 @@
 </head>
 
 
+
+
+
+
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
 
@@ -102,6 +104,10 @@
      <li style="padding:5px">
       <a href="{{ route('login') }}">LOGIN</a>
      </li> <!-- Messages Dropdown Menu -->
+
+
+
+
     @endguest
     </ul>
   </nav>
@@ -152,6 +158,9 @@
               ">
               <i class="nav-icon fa fa-dashboard"></i>
               <p>
+                
+
+
                 Dashboard
               </p>
             </a>
@@ -197,6 +206,10 @@
               </p>
             </a>
             
+
+
+
+
           </li>
           <li class="nav-item">
             <a href="javascript:void(0)" id="va-prof" class="va-prof nav-link 
@@ -261,6 +274,10 @@
     <iframe name="Framename" src="https://www.247virtualagent.com/virtual-assistants/" width="100%" height="2000px" frameborder="0" scrolling="yes" style="width: 100%;"> </iframe> 
     </div>
     <div id="extended_cont">
+
+
+
+
     @yield('content')
     </div>
   </div>
@@ -285,6 +302,8 @@
  <script src="{{ asset('js/product.js') }}"></script>
  <script src="{{ asset('js/product_list.js') }}"></script>
  <script src="{{ asset('js/user.js') }}"></script>
+ 
+
 
 </body>
 

@@ -23,7 +23,7 @@
     
 
 
-
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
@@ -253,7 +253,9 @@ $(document).ready( function() {
 
         $("#imgInp").change(function(){
             readURL(this);
-        });     
+        }); 
+
+  
     });
 
 </script>

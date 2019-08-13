@@ -26,13 +26,24 @@ Route::get('/update_profile', function () {
 
 Auth::routes();
 
+/////IMPORT EXCEL/////////////
+Route::get('/import_excel', 'ImportController@index');
+Route::post('/import_excel/import', 'ImportController@import');
+
+///////////////////////////////////
+
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('addproduct', 'AddproductController');
 Route::resource('product', 'ProductController');
 Route::resource('user', 'UserController');
 
+
+Route::get('/import_excel', 'ImportController@index')->name('import.index');
+
+
 Route::get('/product', 'ProductController@index')->name('product.index');
+Route::post('/product/{id}', 'ProductController@update')->name('product.update');
 Route::post('/update-product/{id}', 'ProductController@updateProduct')->name('product.updateProduct');
 Route::post('/re-update/{id}', 'ProductController@reUpdate')->name('product.reUpdate');
 Route::get('add-to-cart/{id}', 'ProductController@getAddToCart')->name('product.addToCart');

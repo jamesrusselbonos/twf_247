@@ -17,5 +17,10 @@ class Product extends Model
         // public function sold()
         // {
         //     return $this->hasMany('App\Sold', 'pid', 'pid');
+        // }        
+
+        // public function order()
+        // {
+        //     return $this->hasMany('App\Order', 'pid', 'pid');
         // }
 }
