@@ -25,11 +25,13 @@
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                         <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
 
-                                        @error('name')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
+                                 
+                                 @if ($errors->has('name'))
+                                     <span class="invalid-feedback" role="alert">
+                                         <strong>{{ $errors->first('name') }}</strong>
+                                     </span>
+                                 @endif
+
                                     </div>
                                 </div>
 
@@ -39,11 +41,13 @@
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                         <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
 
-                                        @error('email')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
+                                       
+                                       @if ($errors->has('email'))
+                                           <span class="invalid-feedback" role="alert">
+                                               <strong>{{ $errors->first('email') }}</strong>
+                                           </span>
+                                       @endif
+                                       
                                     </div>
                                 </div>
 
@@ -53,11 +57,11 @@
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                         <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
 
-                                        @error('password')
+                                        @if ($errors->has('password'))
                                             <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
+                                                <strong>{{ $errors->first('password') }}</strong>
                                             </span>
-                                        @enderror
+                                        @endif
                                     </div>
                                 </div>
 

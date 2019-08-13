@@ -40,6 +40,8 @@ Route::resource('user', 'UserController');
 
 
 Route::get('/import_excel', 'ImportController@index')->name('import.index');
+Route::get('/test/{id}/edit', 'ImportController@edit')->name('import.edit');
+Route::get('/product/{id}/edit', 'ProductController@edit')->name('product.edit');
 
 
 Route::get('/product', 'ProductController@index')->name('product.index');
@@ -66,5 +68,13 @@ Route::get('/user/{id}/edit', 'UserController@edit')->name('user.edit');
 
 
 Auth::routes(['verify' => true]);
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

@@ -154,9 +154,11 @@ class AddproductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($pid)
     {
-        //
+        $products = Product::find($pid);
+
+        return view('edit_product', compact('products'));
     }
 
     /**

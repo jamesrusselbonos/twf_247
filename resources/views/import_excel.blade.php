@@ -49,7 +49,7 @@
    <br />
    <div class="panel panel-default">
     <div class="panel-heading">
-     <h3 class="panel-title">Customer Data</h3>
+     <h3 class="panel-title">Products</h3>
     </div>
     <div class="panel-body">
      <div class="table-responsive">
@@ -73,7 +73,7 @@
             <tr>
                   <td>{{ $row->brand }}</td>
                   <td>{{ $row->asin }}</td>
-                  <td><a href="{{ $row->product_page_link }}">{{ $row->product_page_link }}</a></td>                  
+                  <td><a href="{{ $row->product_page_link }}" target="_blank">{{ $row->product_page_link }}</a></td>
                   <td>${{ number_format($row->prime_low_price,2) }}</td>
                   <td>{{ number_format($row->total_units_sold_mo) }}</td>
                   <td>${{ number_format($row->total_revenue_mo,2) }}</td>

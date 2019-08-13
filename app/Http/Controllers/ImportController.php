@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use Excel;
+use App\Product;
 
 class ImportController extends Controller
 {
@@ -59,7 +60,9 @@ class ImportController extends Controller
      */
     public function edit($id)
     {
-        //
+        $products = Product::find($id);
+
+        return view('edit_product', compact('products'));
     }
 
     /**

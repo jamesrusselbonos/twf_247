@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Product;
-use App\Sold;
 use App\User;
 use Auth;
 use Session;
@@ -135,7 +134,9 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
+    {   
+
+
         $products = Product::find($id);
 
         return view('edit_product', compact('products'));
@@ -150,7 +151,7 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-      
+
         $this->validate($request, [
         'image' => 'image|nullable|max:1999',
         'brand' => 'required',
@@ -227,7 +228,19 @@ class ProductController extends Controller
 
 
         $product = Product::find($id);
-        $product->image = $fileNameToStore;
+        if( $product->image != null){
+            if( $request->hasFile('product_image'))
+            {
+                $product->image = $fileNameToStore;
+            }
+            else{
+                
+            }
+        }
+        else{
+            $product->image = $fileNameToStore;
+        }
+
         $product->brand = $request->brand;
         $product->asin = $request->asin;
         $product->product_page_link = $request->product_page_link;
