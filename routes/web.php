@@ -30,6 +30,7 @@ Route::post('/import_excel/import', 'ImportController@import');
 ///////////////////////////////////
 Route::get('/product_updates', 'ProductController@productUpdates')->name('product.productUpdates');
 Route::get('/users', 'UserController@index')->name('users.index');
+Route::post('/add_va/{id}', 'UserController@vaUpdate')->name('users.vaUpdate');
 
 Route::get('/dashboard', 'HomeController@dashboard')->name('dashboard.admin');
 

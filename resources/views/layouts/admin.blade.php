@@ -142,6 +142,24 @@
 </html>
 <script type="text/javascript">
     $(document).ready(function() {
+         $('#details-order').DataTable( {
+            
+
+            dom: 'Bfrtip',
+            buttons: [
+                'copy', 'csv', 'excel',
+            ]
+             
+         } );
+
+        $('.agent_link').click(function(){
+          var myNewURL = "va-profile";
+         $.unblockUI(); 
+          $('#content').show();
+          $('#extended_cont').hide();
+          window.history.replaceState({}, document.title, "/" + myNewURL );
+
+        });
         document.addEventListener('contextmenu', event => event.preventDefault());
         $(document).keydown(function(event) {
             // if (event.keyCode == 123) {

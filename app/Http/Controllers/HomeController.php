@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Product;
 use App\User;
+use App\Agent;
 use Auth;
 
 class HomeController extends Controller
@@ -28,8 +29,8 @@ class HomeController extends Controller
     {
 
         $products = Product::all();
-        $users = User::all();
-        return view('home', compact('products', 'users'));
+        $agents = Agent::all();
+        return view('home', compact('products', 'agents'));
     }
 
     public function admin(){
@@ -40,13 +41,13 @@ class HomeController extends Controller
     public function dashboard(){
 
         $products = Product::all();
-        $users = User::all();
+        $agents = Agent::all();
       if(Auth::user()->role_id == 3){
         return redirect()->route('home');
       }
 
       else{
-        return view('admin_home', compact('products', 'users'));
+        return view('admin_home', compact('products', 'agents'));
       }
 
     }

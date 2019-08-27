@@ -49,7 +49,7 @@ class User extends Authenticatable implements MustVerifyEmail
     }   
     public function agent()
     {
-        return $this->has('App\Agent', 'id' , 'user_id');
+        return $this->hasOne('App\Agent', 'id' , 'user_id');
     }   
 
     public function orders()

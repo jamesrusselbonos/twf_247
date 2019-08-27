@@ -41,14 +41,14 @@
             <!-- small box -->
             <div class="small-box bg-warning">
               <div class="inner">
-                <h3>{{ count($users)}}</h3>
+                <h3>{{ count($agents)}}</h3>
 
-                <p>Users</p>
+                <p>Agents</p>
               </div>
               <div class="icon">
                <i class="fas fa-users"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+              <a href="#" class="small-box-footer agent_link">More info <i class="fa fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->

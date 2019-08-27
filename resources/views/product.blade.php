@@ -208,7 +208,8 @@
 </div>
 </br>
 <div id="blocking_div">
-	<input id="hdn-token" type="hidden" name="_token" value="{{csrf_token()}}">
+    <input id="hdn-token" type="hidden" name="_token" value="{{csrf_token()}}">
+	<input id="hdn-wallet1" type="hidden" name="wallet" value="{{ Auth::user()->wallet }}">
 	<table id="example" class="display nowrap table-responsive tbl_prod" style="width:100%">
 	    <thead>
 	        <tr class="fixed-tr">
@@ -254,13 +255,17 @@
 
 <script type="text/javascript">
 $(document).ready(function() { 
+
+    var wallet = $('#hdn-wallet1').val();
+
+    console.log(wallet);
     // $.fn.center = function () {
     //     this.css("position","absolute");
     //     this.css("top", ( $(window).height() - this.height() ) / 2+$(window).scrollTop() + "px");
     //     this.css("left", ( $(window).width() - this.width() ) / 2+$(window).scrollLeft() + "px");
     //     return this;
     // }
-    if({{Auth::user()->wallet == 0}}){
+    if(wallet == 0){
         $.blockUI({ message: '<a href="{{url('/load_account')}}" class="btn btn-warning block_btn">Buy Credits</a>' });
     	// $('#blocking_div').block({ });
         // $.blockUI({ message: '<h1><img src="busy.gif" /> Just a moment...</h1>' });

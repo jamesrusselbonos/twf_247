@@ -8,6 +8,7 @@ use App\Product;
 use DB;
 use Auth;
 use App\Agent;
+use App\Role;
 
 class UserController extends Controller
 {
@@ -22,9 +23,18 @@ class UserController extends Controller
      */
     public function index()
     {
+
+      $users_to_va = DB::table('users')
+                  ->select('users.*')
+                  ->whereNotIn('id', function($query){
+                      $query->select('user_id')->from('v_agents');
+                  })
+                  ->get();
+        
+
         $users = User::all();
         $agents = Agent::all();
-        if(Auth::user()->role_id == 3){
+         if(Auth::user()->role_id == 3){
           return redirect()->route('home');
         }
         
@@ -33,7 +43,8 @@ class UserController extends Controller
         }        
 
         else{
-          return view('users_list', compact('users', 'agents'));
+
+          return view('users_list', compact('users', 'agents','users_to_va'));
         }
 
         
@@ -178,5 +189,32 @@ class UserController extends Controller
 
     public function vaProfile(){
         return view('load-account');
+    }
+
+    public function vaUpdate(Request $request, $id) {
+
+        $user = User::find($id);
+        $agent = new Agent;
+        $agent->user_id = $id;
+
+        if($request->availability){
+            if($request->availability == "In Contract"){
+                
+                $agent->availability = "0";
+            }
+            else{
+                $agent->availability = "1";
+            }
+        }
+
+        if($request->duration != null || $request != ""){
+            $agent->duration = $request->duration;
+        }
+        else{
+            $agent->duration = "0";
+        }
+       
+        $agent->save();
+        return redirect()->route('users.index');
     }
 }
