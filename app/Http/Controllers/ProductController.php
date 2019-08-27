@@ -5,10 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Product;
+use App\Sold;
 use App\User;
 use Auth;
 use Session;
 use App\Cart;
+use App\Order;
 
 class ProductController extends Controller
 {
@@ -151,7 +153,7 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-
+      
         $this->validate($request, [
         'image' => 'image|nullable|max:1999',
         'brand' => 'required',
@@ -187,7 +189,7 @@ class ProductController extends Controller
             
             $image = $request->file('product_image');
 
-            $destination = public_path('/images');
+            $destination = base_path('/images');
              $image->move($destination, $fileNameToStore);
              // $path = $request->file('product_image')->store($destination, $fileNameToStore);
 
@@ -226,8 +228,7 @@ class ProductController extends Controller
 
         }
 
-
-        $product = Product::find($id);
+    $product = Product::find($id);
         if( $product->image != null){
             if( $request->hasFile('product_image'))
             {
@@ -240,7 +241,7 @@ class ProductController extends Controller
         else{
             $product->image = $fileNameToStore;
         }
-
+        $user = Auth::user();
         $product->brand = $request->brand;
         $product->asin = $request->asin;
         $product->product_page_link = $request->product_page_link;
@@ -257,6 +258,7 @@ class ProductController extends Controller
         $product->contact_no = $request->contact_no;
         $product->position = $request->position;
         $product->email = $request->email;
+        $product->updated_by = $user->id;
         $product->save();
 
         return redirect()->route('import.index');
@@ -268,6 +270,24 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+     
+    public function productUpdates()
+    {
+        $users = DB::table('products')
+                    ->join('users', 'users.id', '=', 'products.updated_by')
+                    ->get();
+
+
+        $products = Product::with('user')->get();
+        if(Auth::user()->role_id == 3){
+          return redirect()->route('home');
+        }
+        
+        else{
+        return view('product_updates', compact('products'));
+        }
+    }
+
     public function destroy($id)
     {
         //
@@ -365,10 +385,53 @@ class ProductController extends Controller
 
         $oldCart= Session::get('cart');
         $cart = new Cart($oldCart);
+
+        $user = Auth::user();
+        $order = new Order;
+        $order->orderid = time();
+        
+        $order->uid = $user->id;
+        $order->cart = serialize($cart);
+        Auth::user()->orders()->save($order);
+
+
         Session::forget('cart');
+
+        
         // dd($cart->items);
         return view('checkout', ['products' => $cart->items, 'totalPrice' => $cart->totalPrice]);
     }
+
+        public function postCheckout(Request $request){
+
+            if(!Session::has('cart')){
+                 if(Auth::user()){
+
+                   return redirect()->route('product.index');
+                 }
+                 else{
+                   return redirect('login');
+                 }
+                 
+             }
+         
+            $oldCart= Session::get('cart');
+            $cart = new Cart($oldCart);
+
+            $user = Auth::user();
+            $order = new Order;
+            $order->orderid = time();
+            
+            $order->uid = $user->id;
+            $order->cart = serialize($cart);
+            Auth::user()->orders()->save($order);
+
+             Session::forget('cart');
+
+             
+             // dd($cart->items);
+             return view('checkout', ['products' => $cart->items, 'totalPrice' => $cart->totalPrice]);
+        }
 
    /**
      * Update the specified resource in storage.
@@ -392,5 +455,7 @@ class ProductController extends Controller
        $product->deleted = 0; 
        $product->save(); 
     }
+    
+
 
 }

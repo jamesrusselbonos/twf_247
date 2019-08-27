@@ -1,1 +1,104 @@
-var _0xd189=["\x69\x6E\x6E\x65\x72\x48\x54\x4D\x4C","\x6E\x61\x6D\x65\x2D\x6E","\x67\x65\x74\x45\x6C\x65\x6D\x65\x6E\x74\x42\x79\x49\x64","\x65\x6D\x61\x69\x6C\x2D\x65","\x76\x61\x6C","\x23\x65\x6D\x61\x69\x6C\x31","\x23\x6E\x61\x6D\x65\x31","\x68\x69\x64\x65","\x2E\x76\x69\x65\x77\x2D\x6D\x6F\x64\x65","\x72\x65\x6D\x6F\x76\x65\x43\x6C\x61\x73\x73","\x2E\x65\x64\x69\x74\x2D\x6D\x6F\x64\x65","\x63\x6C\x69\x63\x6B","\x2E\x65\x64\x69\x74\x2D\x75\x73\x65\x72","\x73\x68\x6F\x77","\x61\x64\x64\x43\x6C\x61\x73\x73","\x2E\x64\x65\x74\x61\x69\x6C\x2D\x63\x61\x6E\x63\x65\x6C\x2D\x75\x73\x65\x72","\x69\x64","\x61\x74\x74\x72","\x23\x68\x64\x6E\x2D\x74\x6F\x6B\x65\x6E","\x66\x69\x6E\x64","\x70\x61\x72\x65\x6E\x74","\x75\x73\x65\x72\x2F","\x61\x75\x74\x68\x5F\x75\x73\x65\x72\x6E\x61\x6D\x65","\x70\x6F\x73\x74","\x2E\x64\x65\x74\x61\x69\x6C\x2D\x73\x61\x76\x65\x2D\x75\x73\x65\x72","\x64\x61\x74\x61","\x2E\x75\x70\x6C\x6F\x61\x64\x5F\x75\x73\x65\x72","\x63\x68\x61\x6E\x67\x65","\x2E\x62\x74\x6E\x2D\x66\x69\x6C\x65\x20\x3A\x66\x69\x6C\x65","","\x72\x65\x70\x6C\x61\x63\x65","\x2F","\x66\x69\x6C\x65\x73\x65\x6C\x65\x63\x74","\x74\x72\x69\x67\x67\x65\x72","\x6F\x6E","\x3A\x74\x65\x78\x74","\x2E\x69\x6E\x70\x75\x74\x2D\x67\x72\x6F\x75\x70","\x70\x61\x72\x65\x6E\x74\x73","\x6C\x65\x6E\x67\x74\x68","\x66\x69\x6C\x65\x73","\x6F\x6E\x6C\x6F\x61\x64","\x73\x72\x63","\x72\x65\x73\x75\x6C\x74","\x74\x61\x72\x67\x65\x74","\x23\x69\x6D\x67\x2D\x75\x70\x6C\x6F\x61\x64","\x72\x65\x61\x64\x41\x73\x44\x61\x74\x61\x55\x52\x4C","\x23\x69\x6D\x67\x49\x6E\x70","\x72\x65\x61\x64\x79"];eval(function(p,a,c,k,e,d){e=function(c){return(c<a?'':e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--){d[e(c)]=k[c]||e(c)}k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1};while(c--){if(k[c]){p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c])}}return p}('$(d)[a[U]](c(){$(a[12])[a[11]](c(){b z=d[a[2]](a[1])[a[0]];b j=d[a[2]](a[3])[a[0]];$(a[5])[a[4]](j);$(a[6])[a[4]](z);$(a[8])[a[7]]();$(a[10])[a[9]](a[7])});$(a[15])[a[11]](c(){$(a[8])[a[13]]();$(a[10])[a[14]](a[7])});$(a[1m])[a[11]](c(){b h=$(f)[a[17]](a[16]);b l=$(a[6])[a[4]]();b r=$(a[5])[a[4]]();b n=$(f)[a[v]]()[a[19]](a[18])[a[4]]();$(a[8])[a[13]]();$(a[10])[a[14]](a[7]);$[a[B]](a[D]+h,{"\\m\\w":h,"\\p\\o\\q\\i":l,"\\i\\q\\o\\m\\X":r,"\\H\\C\\E\\F\\i\\p":n},c(u){d[a[2]](a[1])[a[0]]=l;d[a[2]](a[3])[a[0]]=r;d[a[2]](a[I])[a[0]]=l})});$(a[Z])[a[11]](c(){b h=$(f)[a[1b]](a[16]);b A;b n=$(f)[a[v]]()[a[19]](a[18])[a[4]]();$[a[B]](a[D]+h,{"\\m\\w":h,"\\m\\q\\o\\1d\\i":A,"\\H\\C\\E\\F\\i\\p":n},c(u){d[a[2]](a[1])[a[0]]=x;d[a[2]](a[3])[a[0]]=1h;d[a[2]](a[I])[a[0]]=x})});$(d)[a[K]](a[L],a[G],c(){b e=$(f),k=e[a[4]]()[a[y]](/\\\\/g,a[1e])[a[y]](/.*\\//,a[P]);e[a[W]](a[O],[k])});$(a[G])[a[K]](a[O],c(1j,k){b e=$(f)[a[1i]](a[1g])[a[19]](a[1n]),J=k;N(e[a[1l]]){e[a[4]](J)}1k{}});c M(e){N(e[a[s]]&&e[a[s]][0]){b t=1f 1c();t[a[T]]=c(j){$(a[R])[a[17]](a[Q],j[a[S]][a[V]])};t[a[1a]](e[a[s]][0])}}$(a[Y])[a[L]](c(){M(f)})})',62,86,'||||||||||_0xd189|var|function|document|_0x81dfx9|this||_0x81dfx3|x65|_0x81dfx2|_0x81dfxa|_0x81dfx4|x69|_0x81dfx6|x61|x6E|x6D|_0x81dfx5|39|_0x81dfxe|_0x81dfx7|20|x64|name|30|_0x81dfx1|_0x81dfx8|23|x74|21|x6F|x6B|28|x5F|22|_0x81dfxc|34|27|_0x81dfxd|if|32|29|41|44|43|40|47|42|33|x6C|46|26|||||||||||45|25|FileReader|x67|31|new|36|email|37|_0x81dfxb|else|38|24|35'.split('|'),0,{}))
+$(document).ready(function(){
+
+
+	$(".edit-user").click(function(){
+	  var n = document.getElementById('name-n').innerHTML;
+	  var e = document.getElementById('email-e').innerHTML;
+	  $('#email1').val(e);
+	  $('#name1').val(n);
+	  $('.view-mode').hide();
+	  $('.edit-mode').removeClass('hide');
+
+
+	});
+
+	$(".detail-cancel-user").click(function(){
+	  
+	  $('.view-mode').show();
+	  $('.edit-mode').addClass('hide');
+
+	});
+
+
+	$(".detail-save-user").click(function(){
+	    var id = $(this).attr('id');
+	  var name = $('#name1').val();
+	  var email = $('#email1').val();
+	   var token = $(this).parent().find('#hdn-token').val();
+	  $('.view-mode').show();
+	  $('.edit-mode').addClass('hide');
+
+	  $.post('user/' + id,
+	  {'id':id, 'name':name,'email':email,'_token':token}, 
+	  function(data){
+
+	  document.getElementById('name-n').innerHTML = name;
+	  document.getElementById('email-e').innerHTML = email;
+	  document.getElementById('auth_username').innerHTML = name;
+
+
+	   }); 
+	      
+	      
+
+	});
+
+	$(".upload_user").click(function(){
+	    var id = $(this).data('id');
+	    var image ;
+
+	   var token = $(this).parent().find('#hdn-token').val();
+
+
+	  $.post('user/' + id,
+	  {'id':id,'image':image,'_token':token}, 
+	  function(data){
+
+	  document.getElementById('name-n').innerHTML = name;
+	  document.getElementById('email-e').innerHTML = email;
+	  document.getElementById('auth_username').innerHTML = name;
+
+
+	   }); 
+	      
+	      
+
+	});
+
+	    /////////Image//////////
+    $(document).on('change', '.btn-file :file', function() {
+    var input = $(this),
+        label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+    input.trigger('fileselect', [label]);
+    });
+
+    $('.btn-file :file').on('fileselect', function(event, label) {
+        
+        var input = $(this).parents('.input-group').find(':text'),
+            log = label;
+        
+        if( input.length ) {
+            input.val(log);
+        } else {
+            // if( log ) alert(log);
+        }
+    
+    });
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            
+            reader.onload = function (e) {
+                $('#img-upload').attr('src', e.target.result);
+            }
+            
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    $("#imgInp").change(function(){
+        readURL(this);
+    }); 
+
+
+});

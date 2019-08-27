@@ -6,9 +6,15 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Product;
 use DB;
+use Auth;
+use App\Agent;
 
 class UserController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['auth', 'verified']);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +22,21 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $users = User::all();
+        $agents = Agent::all();
+        if(Auth::user()->role_id == 3){
+          return redirect()->route('home');
+        }
+        
+        elseif(Auth::user()->role_id == 2){
+            return redirect()->route('dashboard.admin');
+        }        
+
+        else{
+          return view('users_list', compact('users', 'agents'));
+        }
+
+        
     }
 
     /**
@@ -82,6 +102,19 @@ class UserController extends Controller
 
         
        
+    }    
+
+    public function paypalCredits(Request $request, $id)
+    {
+    
+        $user = User::findOrFail($request->id);
+        $user->id = $request['id']; 
+        $user->wallet = $request['wallet'] + '100' ; 
+        $user->save(); 
+
+        return view('product');
+        
+       
     }
        public function ajaxupdate(Request $request, $id)
     {
@@ -101,12 +134,12 @@ class UserController extends Controller
             
             $image = $request->file('user_image');
 
-            $destination = public_path('/images');
+            $destination = base_path('/images');
              $image->move($destination, $fileNameToStore);
 
              $user->image = $fileNameToStore;
              $user->save();
-             return view('update-profile');
+             return back();
         }
 
         if($request['email']){
@@ -126,7 +159,6 @@ class UserController extends Controller
 
             $user->wallet = $request['wallet']; 
         }
-
 
         $user->save();
       

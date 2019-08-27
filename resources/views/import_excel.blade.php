@@ -1,7 +1,9 @@
 
- @extends('layouts.app')
 
+ @extends('layouts.admin_dashboard')
+  
  @section('content')
+ 
   <br />
   
   <div class="container">
@@ -45,16 +47,11 @@
      </table>
     </div>
    </form>
-   
-   <br />
    <div class="panel panel-default">
-    <div class="panel-heading">
-     <h3 class="panel-title">Products</h3>
-    </div>
     <div class="panel-body">
      <div class="table-responsive">
-      <table class="table table-bordered table-striped">
-
+      <table class="table table-bordered table-striped display" id ="example" style="width:100%">
+        <thead>
             <tr>       
                 <th>Brand</th>
                 <th>ASIN</th>
@@ -67,9 +64,11 @@
                 <th>Sales Equity</br>  (Revenue/Mo)</th>
                 <th>Edit</th>
 
-            </tr>             
+            </tr> 
+        </thead>    
+          <tbody>       
           @foreach($data as $row)
-
+      
             <tr>
                   <td>{{ $row->brand }}</td>
                   <td>{{ $row->asin }}</td>
@@ -92,12 +91,14 @@
                               
                                         
             </tr>
+       
           @endforeach
-     
+     </tbody>
 
       </table>
      </div>
     </div>
    </div>
   </div>
-@endsection
+  @endsection
+

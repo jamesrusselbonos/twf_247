@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Product;
 use App\User;
+use Auth;
 
 class HomeController extends Controller
 {
@@ -34,5 +35,19 @@ class HomeController extends Controller
     public function admin(){
 
         return view('layouts.admin');
+    }    
+
+    public function dashboard(){
+
+        $products = Product::all();
+        $users = User::all();
+      if(Auth::user()->role_id == 3){
+        return redirect()->route('home');
+      }
+
+      else{
+        return view('admin_home', compact('products', 'users'));
+      }
+
     }
 }

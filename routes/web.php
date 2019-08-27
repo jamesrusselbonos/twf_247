@@ -11,9 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 Route::get('/load_account', function () {
     return view('load-account');
 });
@@ -23,7 +20,7 @@ Route::get('/va_profile', function () {
 Route::get('/update_profile', function () {
     return view('update-profile');
 });
-
+Route::get('/', 'DefController@index')->name('def');
 Auth::routes();
 
 /////IMPORT EXCEL/////////////
@@ -31,6 +28,10 @@ Route::get('/import_excel', 'ImportController@index');
 Route::post('/import_excel/import', 'ImportController@import');
 
 ///////////////////////////////////
+Route::get('/product_updates', 'ProductController@productUpdates')->name('product.productUpdates');
+Route::get('/users', 'UserController@index')->name('users.index');
+
+Route::get('/dashboard', 'HomeController@dashboard')->name('dashboard.admin');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
@@ -52,6 +53,7 @@ Route::get('add-to-cart/{id}', 'ProductController@getAddToCart')->name('product.
 Route::get('/shopping-cart', 'ProductController@getCart')->name('product.shoppingCart');
 Route::get('remove-to-cart/{id}', 'ProductController@removeToCart')->name('product.removeCart');
 Route::get('checkout', 'ProductController@getCheckout')->name('product.checkout');
+Route::post('/checkout', 'ProductController@postCheckout')->name('product.checkoutt');
 
 Route::get('/admin', 'HomeController@admin')->name('admin');
 
@@ -61,9 +63,12 @@ Route::get('/product_details/{product}', 'ProductController@show');
 Route::get('/test/{id}', 'TestController@show');
 
 Route::post('/user/{id}', 'UserController@ajaxupdate')->name('user.prof');
+Route::post('/user1/{id}', 'UserController@paypalCredits')->name('user.paypal');
 
 Route::get('/user/{id}/edit', 'UserController@edit')->name('user.edit');
 // Route::post('update', 'UserController@update');
+Route::get('/user_profile', 'OrderController@index')->name('user.order');
+Route::post('/order/store', 'OrderController@getOrder');
 
 
 

@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Twf | 24/7 Virtual Agent</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="{{ asset('plugins/font-awesome/css/font-awesome.min.css') }}">
+
+  <!-- Theme style -->
+  <link rel="stylesheet" href="{{ asset('dist/css/adminlte.min.css') }}">
+  <!-- Google Font: Source Sans Pro -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  
+
+
+
+  
+
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.5.6/css/buttons.dataTables.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/fixedheader/3.1.2/css/fixedHeader.dataTables.min.css">
+
+ 
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+      <!-- jQuery -->
+     
+      <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+      <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+      <script src="https://cdn.datatables.net/buttons/1.5.6/js/dataTables.buttons.min.js"></script>
+      <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.flash.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+      <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.html5.min.js"></script>
+      <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.print.min.js"></script>
+
+      <!-- jQuery UI 1.11.4 -->
+      <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+      <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+      <script>
+        $.widget.bridge('uibutton', $.ui.button)
+      </script>
+      <!-- Bootstrap 4 -->
+      <script src="{{ asset('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+
+   
+
+      <script type = "text/javascript" >
+         function preventBack(){window.history.forward();}
+          setTimeout("preventBack()", 0);
+          window.onunload=function(){null};
+          
+      </script>
+    
+
+
+</head>
+
+
+<body class="hold-transition sidebar-mini">
+<div class="wrapper">
+
+  <!-- Navbar -->
+  <nav class="main-header navbar navbar-expand bg-white navbar-light border-bottom">
+    <!-- Left navbar links -->
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" data-widget="pushmenu" href="#"><i class="fa fa-bars"></i></a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="{{ route('home')}}" class="nav-link">Home</a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="#" class="nav-link">Contact</a>
+      </li>
+    </ul>
+
+
+    <!-- Right navbar links -->
+    <ul class="navbar-nav ml-auto">
+     
+
+     <li style="padding:10px;"><i class="fas fa-dollar-sign"></i> Credits Owned: {{ Auth::user()->wallet }} <a href="{{ url('/load_account') }}" style="color:rgba(0,0,0,.5); text-decoration: none;">
+          <i class="far fa-plus-square"></i>
+     </a></li>     
+ 
+
+
+     <li style="padding:10px;"><a href="{{ route('product.shoppingCart') }}" style="color:rgba(0,0,0,.5); text-decoration: none;">
+         <i class="fa fa-shopping-cart" aria-hidden="true"></i> Shopping Cart
+         <span style="background-color: #e65c00; color:white" class="badge">{{ Session::has('cart') ? Session::get('cart')->totalQty : '' }}</span>
+     </a></li>
+    @guest
+     <li style="padding:5px">
+      <a href="{{ route('login') }}">LOGIN</a>
+     </li> <!-- Messages Dropdown Menu -->
+    @endguest
+    </ul>
+  </nav>
+  <!-- /.navbar -->
+
+  <!-- Main Sidebar Container -->
+  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="{{ route('home') }}" class="brand-link">
+      <img src="{{ asset('images/icon.png') }}" alt="24/7 Logo" class="brand-image img-circle"
+           style="opacity: .8">
+      <span class="brand-text font-weight-light">24/7 Virtual Agent</span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- Sidebar user panel (optional) -->
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="image">
+          <img src=" @if(Auth::user()->image) {{ asset(Auth::user()->image) }} @else {{ asset('dist/img/user2-160x160.jpg') }} @endif" class="img-circle elevation-2" alt="User Image">
+        </div>
+        <div class="info">
+          @guest
+
+          @else
+          <a href="#" class="d-block" id="auth_username">{{ ucwords(Auth::user()->name) }}</a>
+          @endguest
+         
+        </div>
+      </div>
+
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+        @guest
+      
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+          <?php
+            $segment = Request::segment(2);
+          ?>     
+          <li class="nav-item">
+            <a href="{{ route('admin.home') }}" class="nav-link 
+              @if(!$segment)
+              active
+              @endif
+              ">
+              <i class="nav-icon fa fa-dashboard"></i>
+              <p>
+                Dashboard
+              </p>
+            </a>
+            
+          </li>
+          <li class="nav-item">
+            <a href="{{ route('admin.categories.index') }}" class="nav-link 
+              @if($segment=='categories')
+              active
+              @endif">
+              <i class="nav-icon fa fa-th"></i>
+              <p>
+                Category
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ route('admin.news.index') }}" class="nav-link 
+              @if($segment=='news')
+              active
+              @endif">
+              <i class="nav-icon fa fa-pie-chart"></i>
+              <p>
+                News
+              </p>
+            </a>
+          </li>
+          <li class="nav-header">Action</li>
+          @else
+
+          <?php
+            $segment = Request::segment(2);
+          ?>     
+          <li class="nav-item">
+            <a href="{{ route('home') }}" class="nav-link 
+              @if(!$segment)
+              active
+              @endif
+              ">
+              <i class="nav-icon fa fa-dashboard"></i>
+              <p>
+                Dashboard
+              </p>
+            </a>
+            
+          </li>
+          <li class="nav-item">
+            <a href="{{ route('user.order') }}" class="nav-link 
+              @if($segment=='news')
+              active
+              @endif">
+             <i class="far fa-user"></i>
+              <p>
+                User Profile
+              </p>
+            </a>
+          </li>        
+          <li class="nav-item">
+            <a href="javascript:void(0)" id="va-prof" class="va-prof nav-link 
+              @if($segment=='categories')
+              active
+              @endif">
+              <i class="far fa-address-card"></i>
+              <p>
+               VA Profile
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ route('product.index') }}" class="nav-link 
+              @if($segment=='categories')
+              active
+              @endif">
+              <i class="fas fa-th-list"></i>
+              <p>
+                Product List
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ url('/load_account') }}" class="nav-link 
+              @if($segment=='news')
+              active
+              @endif">
+              <i class="far fa-credit-card"></i>
+              <p>
+                Load Account
+              </p>
+            </a>
+          </li>
+          <li class="nav-header">Action</li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                                     <i class="fas fa-sign-out-alt"></i>
+                                       <p> {{ __('Logout') }}</p>
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+
+
+           
+          </li>
+          @endguest
+        </ul>
+      </nav>
+      <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+  </aside>
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper" >
+    <div id="content">
+    <iframe name="Framename" src="https://www.247virtualagent.com/virtual-assistants/" width="100%" height="2000px" frameborder="0" scrolling="yes" style="width: 100%;"> </iframe> 
+    </div>
+    <div id="extended_cont">
+    @yield('content')
+    </div>
+  </div>
+  <!-- /.content-wrapper -->
+  <footer class="main-footer">
+    <strong>Copyright &copy; 2019 <a href="http://247virtualagent">TWF 24/7 Virtual Agent</a>.</strong>
+    All rights reserved.
+    <div class="float-right d-none d-sm-inline-block">
+     
+    </div>
+  </footer>
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
+</div>
+<!-- ./wrapper -->
+
+  <script src="{{ asset('js/va_load.js') }}"></script>
+ <script src="{{ asset('js/product.js') }}"></script>
+ <script src="{{ asset('js/product_list.js') }}"></script>
+ <script src="{{ asset('js/user.js') }}"></script>
+
+</body>
+
+</html>
+

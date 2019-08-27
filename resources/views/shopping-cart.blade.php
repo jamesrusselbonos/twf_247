@@ -86,7 +86,7 @@
 				        	<input id="hdn-token" type="hidden" name="_token" value="{{ csrf_token() }}">
 				        	              <tr>
 				        	              
-				        	              	  <td><img src="{{ asset($product['item']['image']) }}" /></td>
+				        	              	   <td><img src="{{ asset($product['item']['image']) }}" /></td>
 				        	                  <td>${{ number_format($product['item']['prime_low_price'],2) }}</td>
 				        	                  <td>{{ number_format($product['item']['total_units_sold_mo']) }}</td>
 				        	                  <td>${{ number_format($product['item']['total_revenue_mo'],2) }}</td>

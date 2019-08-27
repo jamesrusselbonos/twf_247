@@ -6,6 +6,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
+
 class User extends Authenticatable implements MustVerifyEmail
 {
     use Notifiable;
@@ -42,13 +43,60 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
     ];
 
-    // public function sold()
-    // {
-    //     return $this->hasMany('App\Sold', 'id', 'uid');
-    // }   
+    public function product()
+    {
+        return $this->hasMany('App\Product', 'id' , 'updated_by');
+    }   
+    public function agent()
+    {
+        return $this->has('App\Agent', 'id' , 'user_id');
+    }   
 
-    // public function order()
-    // {
-    //     return $this->hasMany('App\Sold', 'id', 'uid');
-    // }
+    public function orders()
+    {
+        return $this->hasMany('App\Order', 'uid', 'id');
+    }
+
+    public function details()
+    {
+        return $this->hasMany('App\Details', 'id', 'uid');
+    }
+
+    public function roles()
+       {
+           return $this
+               ->belongsToMany('App\Role')
+               ->withTimestamps();
+       }
+
+
+       public function authorizeRoles($roles)
+       {
+         if ($this->hasAnyRole($roles)) {
+           return true;
+         }
+         abort(401, 'This action is unauthorized.');
+       }
+       public function hasAnyRole($roles)
+       {
+         if (is_array($roles)) {
+           foreach ($roles as $role) {
+             if ($this->hasRole($role)) {
+               return true;
+             }
+           }
+         } else {
+           if ($this->hasRole($roles)) {
+             return true;
+           }
+         }
+         return false;
+       }
+       public function hasRole($role)
+       {
+         if ($this->roles()->where('name', $role)->first()) {
+           return true;
+         }
+         return false;
+       }
 }

@@ -1,5 +1,5 @@
 
-@extends('layouts.app')
+@extends('layouts.admin_dashboard')
 <link rel="stylesheet" href="{{ asset('dist/css/adminlte.min.css') }}">
 @section('content')
   <div class="container">

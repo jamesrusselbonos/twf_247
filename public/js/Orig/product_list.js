@@ -12,11 +12,9 @@ $(document).ready(function() {
    "orderable": false
    } ],
      scrollY:  '1000px',
-     scrollX:  false,
      dom: 'Bfrtip',
      // "pageLength": 50,
      "bPaginate": false,
-     responsive: true,
 
      buttons: [
 
